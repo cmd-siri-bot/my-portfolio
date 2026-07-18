@@ -15,8 +15,8 @@ export default function Contact() {
           Let&apos;s <span className="hl">talk</span>.
         </h1>
         <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-ink-muted">
-          Campaigns, civic tech, automation, or a data story that needs telling
-          â€” if it&apos;s in that world, I want to hear about it.
+          Campaigns, civic tech, AI, GTM, automation, or a data story that needs telling.
+           If it&apos;s in that world, I want to hear about it.
         </p>
       </section>
 
