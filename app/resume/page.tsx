@@ -1,13 +1,13 @@
 ﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Resume â€” Siri Rama",
+  title: "Resume &mdash; Siri Rama",
   description:
     "Economist and storyteller based in Toronto. Experience, education, and skills.",
 };
 
 /**
- * TODO â€” This is a scaffold. Replace every item marked TODO with your real
+ * TODO &mdash; This is a scaffold. Replace every item marked TODO with your real
  * details (titles, employers, dates, and one-line accomplishments). Keep each
  * bullet outcome-focused: what changed because you were there.
  */
@@ -23,22 +23,22 @@ type Role = {
 const experience: Role[] = [
   {
     // TODO: confirm your current title and employer
-    title: "TODO â€” Your role",
+    title: "TODO &mdash; Your role",
     org: "Delphic Research",
-    dates: "TODO â€” Start â€“ Present",
+    dates: "TODO &mdash; Start &ndash; Present",
     location: "Toronto, ON",
     points: [
-      "TODO â€” Lead with an outcome: a number, a win, a decision you shaped.",
-      "TODO â€” A second accomplishment that shows the data + narrative combo.",
+      "TODO &mdash; Lead with an outcome: a number, a win, a decision you shaped.",
+      "TODO &mdash; A second accomplishment that shows the data + narrative combo.",
     ],
   },
   {
-    title: "TODO â€” Previous role",
-    org: "TODO â€” Employer / campaign",
-    dates: "TODO â€” Dates",
-    location: "TODO â€” City",
+    title: "TODO &mdash; Previous role",
+    org: "TODO &mdash; Employer / campaign",
+    dates: "TODO &mdash; Dates",
+    location: "TODO &mdash; City",
     points: [
-      "TODO â€” What you did and the result.",
+      "TODO &mdash; What you did and the result.",
     ],
   },
 ];
@@ -46,8 +46,8 @@ const experience: Role[] = [
 const education = [
   {
     // Verified from your LinkedIn; confirm degree + years.
-    school: "Queen's University â€” School of Policy Studies",
-    detail: "TODO â€” Degree, field, graduation year",
+    school: "Queen's University &mdash; School of Policy Studies",
+    detail: "TODO &mdash; Degree, field, graduation year",
     location: "Kingston, ON",
   },
 ];
@@ -69,7 +69,7 @@ export default function Resume() {
         <div>
           <h1 className="font-serif text-4xl leading-tight">Siri Rama</h1>
           <p className="mt-2 text-[17px] text-ink-muted">
-            Economist by training, storyteller by nature â€” Toronto, ON
+            Economist by training, storyteller by nature &mdash; Toronto, ON
           </p>
         </div>
         <div className="font-mono text-[13px] text-ink-muted">

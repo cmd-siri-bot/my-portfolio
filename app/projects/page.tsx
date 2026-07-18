@@ -2,7 +2,7 @@
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
-  title: "Projects â€” Siri Rama",
+  title: "Projects &mdash; Siri Rama",
   description:
     "Automation agents, ATIP tooling, and open-data analysis by Siri Rama.",
 };
@@ -35,7 +35,7 @@ export default function Projects() {
           The <span className="hl">case files</span>.
         </h1>
         <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-ink-muted">
-          Tools I built to get from raw data to a story worth telling â€” agents,
+          Tools I built to get from raw data to a story worth telling &mdash; agents,
           automation, and analysis. Each one shipped; each one taught me
           something the docs didn&apos;t. Live demos hang off subdomains of this
           site as they go up.
@@ -111,7 +111,7 @@ export default function Projects() {
                         rel="noreferrer"
                         className="mt-4 inline-block font-mono text-[13px] underline underline-offset-4 hover:bg-mark"
                       >
-                        View source â†’
+                        View source &rarr;
                       </a>
                     )}
                   </div>

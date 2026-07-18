@@ -16,7 +16,7 @@ export default function Home() {
           <span className="hl">a storyteller by nature.</span>
         </h1>
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed text-ink-muted">
-          I&apos;m Siri Rama. I create compelling narratives backed by data â€”
+          I&apos;m Siri Rama. I create compelling narratives backed by data &mdash;
           the kind that have won over voters and buying committees alike. The
           projects below are the other half of that craft: the automation and
           analysis tools I build to get from raw data to a story worth telling.
@@ -33,7 +33,7 @@ export default function Home() {
             href="/projects"
             className="font-mono text-[13px] text-ink-muted hover:text-ink"
           >
-            All projects â†’
+            All projects &rarr;
           </Link>
         </div>
 
@@ -52,7 +52,7 @@ export default function Home() {
                     <span className="hl-sweep">{p.title}</span>
                     {p.locked && (
                       <span className="ml-2 align-middle font-mono text-[11px] uppercase tracking-widest text-ink-muted">
-                        Â· In progress
+                        &middot; In progress
                       </span>
                     )}
                   </h3>

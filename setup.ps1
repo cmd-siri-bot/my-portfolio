@@ -1,20 +1,20 @@
 # ============================================================
-#  Portfolio setup script  -  writes 6 files to the right folders
+#  Portfolio setup (ENCODING-FIXED) - writes all pages as pure ASCII
 #
 #  HOW TO RUN:
 #    1. Save this file into  C:\Users\iamsi\my-portfolio
-#    2. Open a terminal in that folder and run:
+#    2. In that folder run:
 #         powershell -ExecutionPolicy Bypass -File .\setup.ps1
 #
-#  Safe to run more than once. It overwrites the 6 files each time.
+#  NOTE: this overwrites the 6 core files. If you've edited your resume
+#  or project text, copy those edits somewhere first - this restores the
+#  draft versions (with the encoding fix applied).
 # ============================================================
 
 if (-not (Test-Path ".\package.json")) {
-  Write-Host "ERROR: No package.json here." -ForegroundColor Red
-  Write-Host "Run this from your project root: C:\Users\iamsi\my-portfolio" -ForegroundColor Red
+  Write-Host "ERROR: Run from your project root: C:\Users\iamsi\my-portfolio" -ForegroundColor Red
   exit 1
 }
-
 New-Item -ItemType Directory -Force -Path ".\lib" | Out-Null
 New-Item -ItemType Directory -Force -Path ".\app\projects" | Out-Null
 New-Item -ItemType Directory -Force -Path ".\app\about" | Out-Null
@@ -40,11 +40,11 @@ export const projects: Project[] = [
     slug: "executive-agent",
     file: "FILE 01",
     title: "Executive Agent",
-    meta: "Python · LLM · Agentic workflow · 2026",
+    meta: "Python - LLM - Agentic workflow - 2026",
     summary:
       "A personal AI chief-of-staff that turns a day's worth of scattered inputs into a prioritized plan.",
     detail:
-      "An agentic assistant that reads across the messy inputs of a working day — email, calendar, notes, documents — and produces a single prioritized brief: what needs a decision, what can wait, and what to say. Built around a plan-and-review loop so the agent proposes, and a human approves, before anything leaves the room.",
+      "An agentic assistant that reads across the messy inputs of a working day - email, calendar, notes, documents - and produces a single prioritized brief: what needs a decision, what can wait, and what to say. Built around a plan-and-review loop so the agent proposes, and a human approves, before anything leaves the room.",
     href: "https://github.com/cmd-siri-bot",
     featured: true,
   },
@@ -52,11 +52,11 @@ export const projects: Project[] = [
     slug: "downloads-butler",
     file: "FILE 02",
     title: "Downloads Butler",
-    meta: "PowerShell · Ollama · Open source · 2026",
+    meta: "PowerShell - Ollama - Open source - 2026",
     summary:
-      "A human-in-the-loop AI agent that keeps a Downloads folder clean — nothing moves without sign-off.",
+      "A human-in-the-loop AI agent that keeps a Downloads folder clean - nothing moves without sign-off.",
     detail:
-      "A five-stage pipeline — scan, analyze, report, approve, execute — that inventories files with SHA-256 hashing, flags duplicates and stale installers with a deterministic rules engine plus an optional local-LLM pass, then presents an HTML approval page. Approved actions run through a quarantine system with a full restore path, so no file is ever destructively deleted. Built and adversarially tested against path-traversal and protected-file edge cases.",
+      "A five-stage pipeline - scan, analyze, report, approve, execute - that inventories files with SHA-256 hashing, flags duplicates and stale installers with a deterministic rules engine plus an optional local-LLM pass, then presents an HTML approval page. Approved actions run through a quarantine system with a full restore path, so no file is ever destructively deleted. Built and adversarially tested against path-traversal and protected-file edge cases.",
     href: "https://github.com/cmd-siri-bot",
     featured: true,
   },
@@ -64,9 +64,9 @@ export const projects: Project[] = [
     slug: "atip-automation",
     file: "FILE 03",
     title: "ATIP Automation",
-    meta: "Python · Automation · 2026",
+    meta: "Python - Automation - 2026",
     summary:
-      "Tooling that takes the grind out of Access to Information requests — drafting, filing, and tracking.",
+      "Tooling that takes the grind out of Access to Information requests - drafting, filing, and tracking.",
     featured: true,
     locked: true,
     status: "Work in progress",
@@ -75,11 +75,11 @@ export const projects: Project[] = [
     slug: "toronto-open-data",
     file: "FILE 04",
     title: "City of Toronto Open Data",
-    meta: "Python · Data viz · Civic tech · 2026",
+    meta: "Python - Data viz - Civic tech - 2026",
     summary:
       "Pulling Toronto's open data into analyses and visuals that make a point instead of just a chart.",
     detail:
-      "The City of Toronto publishes hundreds of open datasets; most sit unread. This project pulls from that portal and turns raw civic data into narratives with a thesis — mapping, comparing, and contextualizing the numbers to answer questions residents and decision-makers actually ask. The data-storytelling half of the resume, applied to the city I live in.",
+      "The City of Toronto publishes hundreds of open datasets; most sit unread. This project pulls from that portal and turns raw civic data into narratives with a thesis - mapping, comparing, and contextualizing the numbers to answer questions residents and decision-makers actually ask. The data-storytelling half of the resume, applied to the city I live in.",
     href: "https://github.com/cmd-siri-bot",
     featured: true,
   },
@@ -114,9 +114,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Siri Rama — Economist by training, storyteller by nature",
+  title: "Siri Rama &mdash; Economist by training, storyteller by nature",
   description:
-    "I build compelling narratives backed by data — and the automation tools behind them. AI agents, ATIP automation, and open-data analysis, from Toronto.",
+    "I build compelling narratives backed by data &mdash; and the automation tools behind them. AI agents, ATIP automation, and open-data analysis, from Toronto.",
 };
 
 export default function RootLayout({
@@ -142,9 +142,9 @@ export default function RootLayout({
               <Link href="/about" className="hover:text-ink">
                 About
               </Link>
-              <a href="mailto:iamsirir@gmail.com" className="hover:text-ink">
+              <Link href="/contact" className="hover:text-ink">
                 Contact
-              </a>
+              </Link>
             </div>
           </nav>
         </header>
@@ -153,7 +153,7 @@ export default function RootLayout({
 
         <footer className="mt-24 border-t border-line">
           <div className="mx-auto flex max-w-3xl flex-wrap items-baseline justify-between gap-3 px-5 py-8 font-mono text-[12px] text-ink-muted">
-            <span>© 2026 Siri Rama · Toronto</span>
+            <span>&copy; 2026 Siri Rama &middot; Toronto</span>
             <div className="flex gap-5">
               <a
                 href="https://github.com/cmd-siri-bot"
@@ -201,7 +201,7 @@ export default function Home() {
           <span className="hl">a storyteller by nature.</span>
         </h1>
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed text-ink-muted">
-          I&apos;m Siri Rama. I create compelling narratives backed by data —
+          I&apos;m Siri Rama. I create compelling narratives backed by data &mdash;
           the kind that have won over voters and buying committees alike. The
           projects below are the other half of that craft: the automation and
           analysis tools I build to get from raw data to a story worth telling.
@@ -218,7 +218,7 @@ export default function Home() {
             href="/projects"
             className="font-mono text-[13px] text-ink-muted hover:text-ink"
           >
-            All projects →
+            All projects &rarr;
           </Link>
         </div>
 
@@ -237,7 +237,7 @@ export default function Home() {
                     <span className="hl-sweep">{p.title}</span>
                     {p.locked && (
                       <span className="ml-2 align-middle font-mono text-[11px] uppercase tracking-widest text-ink-muted">
-                        · In progress
+                        &middot; In progress
                       </span>
                     )}
                   </h3>
@@ -298,7 +298,7 @@ import type { Metadata } from "next";
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
-  title: "Projects — Siri Rama",
+  title: "Projects &mdash; Siri Rama",
   description:
     "Automation agents, ATIP tooling, and open-data analysis by Siri Rama.",
 };
@@ -331,7 +331,7 @@ export default function Projects() {
           The <span className="hl">case files</span>.
         </h1>
         <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-ink-muted">
-          Tools I built to get from raw data to a story worth telling — agents,
+          Tools I built to get from raw data to a story worth telling &mdash; agents,
           automation, and analysis. Each one shipped; each one taught me
           something the docs didn&apos;t. Live demos hang off subdomains of this
           site as they go up.
@@ -407,7 +407,7 @@ export default function Projects() {
                         rel="noreferrer"
                         className="mt-4 inline-block font-mono text-[13px] underline underline-offset-4 hover:bg-mark"
                       >
-                        View source →
+                        View source &rarr;
                       </a>
                     )}
                   </div>
@@ -443,7 +443,7 @@ $content = @'
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About — Siri Rama",
+  title: "About &mdash; Siri Rama",
   description:
     "An economist by training and a storyteller by nature, working at the intersection of data and narrative in Toronto.",
 };
@@ -477,7 +477,7 @@ export default function About() {
       <section className="max-w-xl space-y-6 text-[17px] leading-relaxed">
         <p>
           I&apos;m an economist by training and a storyteller by nature. Those
-          usually pull in opposite directions — rigor versus persuasion — and
+          usually pull in opposite directions &mdash; rigor versus persuasion &mdash; and
           most of my work is spent proving they don&apos;t have to.
         </p>
         <p>
@@ -486,14 +486,14 @@ export default function About() {
           where data becomes canvass strategy and a message that moves turnout;
           and buying committees, where the same discipline becomes a business
           case a room of skeptics will sign off on. Different stakes, identical
-          method — find what the data actually says, then make people feel why
+          method &mdash; find what the data actually says, then make people feel why
           it matters.
         </p>
         <p>
           The projects on this site are the engine room behind that. When the
           analysis got repetitive, I automated it; when the data was locked in a
           portal, I wrote something to free it. Everything on the technical side
-          is self-taught — mostly by breaking things and reading the error
+          is self-taught &mdash; mostly by breaking things and reading the error
           messages carefully.
         </p>
       </section>
@@ -541,13 +541,13 @@ $content = @'
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Resume — Siri Rama",
+  title: "Resume &mdash; Siri Rama",
   description:
     "Economist and storyteller based in Toronto. Experience, education, and skills.",
 };
 
 /**
- * TODO — This is a scaffold. Replace every item marked TODO with your real
+ * TODO &mdash; This is a scaffold. Replace every item marked TODO with your real
  * details (titles, employers, dates, and one-line accomplishments). Keep each
  * bullet outcome-focused: what changed because you were there.
  */
@@ -563,22 +563,22 @@ type Role = {
 const experience: Role[] = [
   {
     // TODO: confirm your current title and employer
-    title: "TODO — Your role",
+    title: "TODO &mdash; Your role",
     org: "Delphic Research",
-    dates: "TODO — Start – Present",
+    dates: "TODO &mdash; Start &ndash; Present",
     location: "Toronto, ON",
     points: [
-      "TODO — Lead with an outcome: a number, a win, a decision you shaped.",
-      "TODO — A second accomplishment that shows the data + narrative combo.",
+      "TODO &mdash; Lead with an outcome: a number, a win, a decision you shaped.",
+      "TODO &mdash; A second accomplishment that shows the data + narrative combo.",
     ],
   },
   {
-    title: "TODO — Previous role",
-    org: "TODO — Employer / campaign",
-    dates: "TODO — Dates",
-    location: "TODO — City",
+    title: "TODO &mdash; Previous role",
+    org: "TODO &mdash; Employer / campaign",
+    dates: "TODO &mdash; Dates",
+    location: "TODO &mdash; City",
     points: [
-      "TODO — What you did and the result.",
+      "TODO &mdash; What you did and the result.",
     ],
   },
 ];
@@ -586,8 +586,8 @@ const experience: Role[] = [
 const education = [
   {
     // Verified from your LinkedIn; confirm degree + years.
-    school: "Queen's University — School of Policy Studies",
-    detail: "TODO — Degree, field, graduation year",
+    school: "Queen's University &mdash; School of Policy Studies",
+    detail: "TODO &mdash; Degree, field, graduation year",
     location: "Kingston, ON",
   },
 ];
@@ -609,7 +609,7 @@ export default function Resume() {
         <div>
           <h1 className="font-serif text-4xl leading-tight">Siri Rama</h1>
           <p className="mt-2 text-[17px] text-ink-muted">
-            Economist by training, storyteller by nature — Toronto, ON
+            Economist by training, storyteller by nature &mdash; Toronto, ON
           </p>
         </div>
         <div className="font-mono text-[13px] text-ink-muted">
@@ -716,10 +716,8 @@ export default function Resume() {
 Set-Content -Path ".\app\resume\page.tsx" -Value $content -Encoding UTF8
 
 Write-Host ""
-Write-Host "Done - all 6 files written." -ForegroundColor Green
-Write-Host "Your dev server auto-reloads. Open http://localhost:3000 to check." -ForegroundColor Green
-Write-Host ""
-Write-Host "When it looks right, publish with:" -ForegroundColor Yellow
+Write-Host "Done - all 6 files rewritten as clean ASCII. The garbled dashes are gone." -ForegroundColor Green
+Write-Host "Refresh http://localhost:3000 to confirm, then:" -ForegroundColor Green
 Write-Host "  git add ."
-Write-Host '  git commit -m "Add resume page, lock ATIP project, update contact info"'
+Write-Host '  git commit -m "Fix character encoding across all pages"'
 Write-Host "  git push"

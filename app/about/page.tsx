@@ -1,7 +1,7 @@
 ﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About â€” Siri Rama",
+  title: "About &mdash; Siri Rama",
   description:
     "An economist by training and a storyteller by nature, working at the intersection of data and narrative in Toronto.",
 };
@@ -35,7 +35,7 @@ export default function About() {
       <section className="max-w-xl space-y-6 text-[17px] leading-relaxed">
         <p>
           I&apos;m an economist by training and a storyteller by nature. Those
-          usually pull in opposite directions â€” rigor versus persuasion â€” and
+          usually pull in opposite directions &mdash; rigor versus persuasion &mdash; and
           most of my work is spent proving they don&apos;t have to.
         </p>
         <p>
@@ -44,14 +44,14 @@ export default function About() {
           where data becomes canvass strategy and a message that moves turnout;
           and buying committees, where the same discipline becomes a business
           case a room of skeptics will sign off on. Different stakes, identical
-          method â€” find what the data actually says, then make people feel why
+          method &mdash; find what the data actually says, then make people feel why
           it matters.
         </p>
         <p>
           The projects on this site are the engine room behind that. When the
           analysis got repetitive, I automated it; when the data was locked in a
           portal, I wrote something to free it. Everything on the technical side
-          is self-taught â€” mostly by breaking things and reading the error
+          is self-taught &mdash; mostly by breaking things and reading the error
           messages carefully.
         </p>
       </section>

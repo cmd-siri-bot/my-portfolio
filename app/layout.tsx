@@ -23,9 +23,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Siri Rama â€” Economist by training, storyteller by nature",
+  title: "Siri Rama &mdash; Economist by training, storyteller by nature",
   description:
-    "I build compelling narratives backed by data â€” and the automation tools behind them. AI agents, ATIP automation, and open-data analysis, from Toronto.",
+    "I build compelling narratives backed by data &mdash; and the automation tools behind them. AI agents, ATIP automation, and open-data analysis, from Toronto.",
 };
 
 export default function RootLayout({
@@ -62,7 +62,7 @@ export default function RootLayout({
 
         <footer className="mt-24 border-t border-line">
           <div className="mx-auto flex max-w-3xl flex-wrap items-baseline justify-between gap-3 px-5 py-8 font-mono text-[12px] text-ink-muted">
-            <span>Â© 2026 Siri Rama Â· Toronto</span>
+            <span>&copy; 2026 Siri Rama &middot; Toronto</span>
             <div className="flex gap-5">
               <a
                 href="https://github.com/cmd-siri-bot"
