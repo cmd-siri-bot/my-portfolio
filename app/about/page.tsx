@@ -7,18 +7,18 @@ export const metadata: Metadata = {
 };
 
 const narrativeSide = [
-  "Data storytelling",
-  "Campaign & voter strategy",
-  "B2B sales narratives",
+  "Data-driven storytelling",
+  "Go-To-Market Strategy",
+  "Sales narratives",
   "Briefing notes & memos",
   "Stakeholder communication",
 ];
 
 const analyticSide = [
   "Economic & statistical analysis",
+  "SQL and Business Intelligence analysis",
   "Python",
-  "PowerShell",
-  "LLM & agentic workflows (Ollama)",
+  "LLM & agentic workflows ",
   "Open-data pipelines",
 ];
 
@@ -83,7 +83,7 @@ export default function About() {
       <section className="border-t border-line py-12">
         <p className="max-w-xl leading-relaxed">
           {/* TODO: swap in real personal interests if you'd like */}
-          Off the clock: history and politics rabbit holes, strategy games, and
+          Off the clock: cycling, history and politics, strategy games, and
           the occasional side project that starts as a one-off script and
           refuses to stay small.
         </p>
