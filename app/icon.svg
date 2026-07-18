@@ -1,0 +1,5 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SR monogram">
+  <rect x="0" y="0" width="512" height="512" rx="112" fill="#fbfaf7"/>
+  <rect x="96" y="264" width="320" height="120" rx="14" fill="#ffe14d"/>
+  <text x="256" y="352" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="224" font-weight="700" fill="#1d2025" letter-spacing="-8">SR</text>
+</svg>
