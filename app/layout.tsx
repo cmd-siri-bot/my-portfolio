@@ -23,9 +23,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Siri Rama — ; Economist by training, storyteller by nature",
+  title: "Siri Rama — Economist by training, storyteller by nature",
   description:
-    "I build compelling narratives backed by data &mdash; and the automation tools behind them. AI agents, ATIP automation, and open-data analysis, from Toronto.",
+    "I build compelling narratives backed by data and the automation tools behind them. AI agents, ATIP automation, and open-data analysis, from Toronto.",
 };
 
 export default function RootLayout({

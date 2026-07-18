@@ -1,7 +1,7 @@
 ﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About — ; Siri Rama",
+  title: "About — Siri Rama",
   description:
     "An economist by training and a storyteller by nature, working at the intersection of data and narrative in Toronto.",
 };

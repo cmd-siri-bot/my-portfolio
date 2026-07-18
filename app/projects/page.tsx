@@ -2,7 +2,7 @@
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
-  title: "Projects — ; Siri Rama",
+  title: "Projects — Siri Rama",
   description:
     "Automation agents, ATIP tooling, and open-data analysis by Siri Rama.",
 };

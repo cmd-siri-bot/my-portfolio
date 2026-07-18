@@ -2,7 +2,7 @@
 import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact — ” Siri Rama",
+  title: "Contact — Siri Rama",
   description:
     "Get in touch with Siri Rama — ” by email or the contact form.",
 };
