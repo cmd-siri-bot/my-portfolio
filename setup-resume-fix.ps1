@@ -1,21 +1,18 @@
 # ============================================================
-#  Resume page setup - installs your real resume content
-#    powershell -ExecutionPolicy Bypass -File .\setup-resume.ps1
-#
-#  After running, add your logo files to:  public\logos\
-#  (filenames listed at the end of this run). Missing logos just
-#  show a blank frame - they never break the layout.
+#  Resume fix - splits the logo into a client component so the
+#  page keeps its SEO metadata and the onError handler works.
+#    powershell -ExecutionPolicy Bypass -File .\setup-resume-fix.ps1
 # ============================================================
 if (-not (Test-Path ".\package.json")) {
   Write-Host "ERROR: Run from C:\Users\iamsi\my-portfolio" -ForegroundColor Red
   exit 1
 }
 New-Item -ItemType Directory -Force -Path ".\app\resume" | Out-Null
-New-Item -ItemType Directory -Force -Path ".\public\logos" | Out-Null
 
 Write-Host "Writing app/resume/page.tsx ..." -ForegroundColor Cyan
 $content = @'
 import type { Metadata } from "next";
+import Logo from "./Logo";
 
 export const metadata: Metadata = {
   title: "Resume - Siri Rama",
@@ -103,25 +100,6 @@ const education = [
     detail: "Economics and Politics (International Relations)",
   },
 ];
-
-function Logo({ src, alt }: { src: string; alt: string }) {
-  // Neutral placeholder frame; the <img> sits on top and shows once the file
-  // exists in /public/logos/. Missing images stay invisible (opacity handled
-  // by the browser's broken-image = empty alt), so the layout never breaks.
-  return (
-    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-md border border-line bg-paper">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={alt}
-        className="h-full w-full object-contain p-1.5"
-        onError={(e) => {
-          (e.currentTarget as HTMLImageElement).style.visibility = "hidden";
-        }}
-      />
-    </div>
-  );
-}
 
 export default function Resume() {
   return (
@@ -228,14 +206,31 @@ export default function Resume() {
 '@
 Set-Content -Path ".\app\resume\page.tsx" -Value $content -Encoding UTF8
 
+Write-Host "Writing app/resume/Logo.tsx ..." -ForegroundColor Cyan
+$content = @'
+"use client";
+
+export default function Logo({ src, alt }: { src: string; alt: string }) {
+  // Fixed frame; the image shows once the file exists in /public/logos/.
+  // A missing file is hidden on error so the layout never breaks.
+  return (
+    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-md border border-line bg-paper">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt}
+        className="h-full w-full object-contain p-1.5"
+        onError={(e) => {
+          (e.currentTarget as HTMLImageElement).style.visibility = "hidden";
+        }}
+      />
+    </div>
+  );
+}
+'@
+Set-Content -Path ".\app\resume\Logo.tsx" -Value $content -Encoding UTF8
+
 Write-Host ""
-Write-Host "Resume installed. Now drop these logo files into public\logos\ :" -ForegroundColor Green
-Write-Host "  tipalti.png"
-Write-Host "  delphic.png"
-Write-Host "  sussex.png"
-Write-Host "  government-of-canada.png"
-Write-Host "  queens.png"
-Write-Host "  uoft.png"
-Write-Host ""
-Write-Host "Each ~96x96px, square, PNG with transparent background works best." -ForegroundColor Green
-Write-Host "Then: git add . ; git commit -m 'Add real resume + logos' ; git push" -ForegroundColor Yellow
+Write-Host "Fixed. The 'Event handlers cannot be passed' error is gone." -ForegroundColor Green
+Write-Host "Refresh http://localhost:3000/resume then:" -ForegroundColor Yellow
+Write-Host "  git add . ; git commit -m 'Fix resume server/client split' ; git push"

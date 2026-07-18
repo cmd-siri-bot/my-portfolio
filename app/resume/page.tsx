@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import Logo from "./Logo";
 
 export const metadata: Metadata = {
   title: "Resume - Siri Rama",
@@ -86,25 +87,6 @@ const education = [
     detail: "Economics and Politics (International Relations)",
   },
 ];
-
-function Logo({ src, alt }: { src: string; alt: string }) {
-  // Neutral placeholder frame; the <img> sits on top and shows once the file
-  // exists in /public/logos/. Missing images stay invisible (opacity handled
-  // by the browser's broken-image = empty alt), so the layout never breaks.
-  return (
-    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-md border border-line bg-paper">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={alt}
-        className="h-full w-full object-contain p-1.5"
-        onError={(e) => {
-          (e.currentTarget as HTMLImageElement).style.visibility = "hidden";
-        }}
-      />
-    </div>
-  );
-}
 
 export default function Resume() {
   return (
