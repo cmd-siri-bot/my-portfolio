@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #fbfaf7;
+  --ink: #1d2025;
+  --ink-muted: #61666d;
+  --line: #e5e3da;
+  --mark: #ffe14d;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-mark: var(--mark);
+  --font-serif: var(--font-caslon);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--mark);
+  color: var(--ink);
+}
+
+/* Signature element: highlighter stroke behind key phrases.
+   Sits low on the text like a real marker, clones across line breaks. */
+.hl {
+  background-image: linear-gradient(
+    to top,
+    var(--mark) 0%,
+    var(--mark) 46%,
+    transparent 46%
+  );
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 0.08em;
+}
+
+/* Hover treatment for project titles: the highlighter sweeps in. */
+.hl-sweep {
+  background-image: linear-gradient(
+    to top,
+    var(--mark) 0%,
+    var(--mark) 46%,
+    transparent 46%
+  );
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 320ms ease;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+a:hover .hl-sweep,
+a:focus-visible .hl-sweep {
+  background-size: 100% 100%;
+}
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hl-sweep {
+    transition: none;
+  }
 }
