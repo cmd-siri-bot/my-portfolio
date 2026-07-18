@@ -1,4 +1,21 @@
-﻿import type { Metadata } from "next";
+# ============================================================
+#  Resume page setup - installs your real resume content
+#    powershell -ExecutionPolicy Bypass -File .\setup-resume.ps1
+#
+#  After running, add your logo files to:  public\logos\
+#  (filenames listed at the end of this run). Missing logos just
+#  show a blank frame - they never break the layout.
+# ============================================================
+if (-not (Test-Path ".\package.json")) {
+  Write-Host "ERROR: Run from C:\Users\iamsi\my-portfolio" -ForegroundColor Red
+  exit 1
+}
+New-Item -ItemType Directory -Force -Path ".\app\resume" | Out-Null
+New-Item -ItemType Directory -Force -Path ".\public\logos" | Out-Null
+
+Write-Host "Writing app/resume/page.tsx ..." -ForegroundColor Cyan
+$content = @'
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Resume - Siri Rama",
@@ -208,3 +225,17 @@ export default function Resume() {
     </>
   );
 }
+'@
+Set-Content -Path ".\app\resume\page.tsx" -Value $content -Encoding UTF8
+
+Write-Host ""
+Write-Host "Resume installed. Now drop these logo files into public\logos\ :" -ForegroundColor Green
+Write-Host "  tipalti.png"
+Write-Host "  delphic.png"
+Write-Host "  sussex.png"
+Write-Host "  government-of-canada.png"
+Write-Host "  queens.png"
+Write-Host "  uoft.png"
+Write-Host ""
+Write-Host "Each ~96x96px, square, PNG with transparent background works best." -ForegroundColor Green
+Write-Host "Then: git add . ; git commit -m 'Add real resume + logos' ; git push" -ForegroundColor Yellow

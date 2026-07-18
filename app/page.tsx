@@ -76,8 +76,7 @@ export default function Home() {
           <span className="hl">data and narrative</span>?
         </h2>
         <p className="mt-4 max-w-xl leading-relaxed text-ink-muted">
-          I&apos;m always interested in campaigns, civic tech, and automation
-          problems. The fastest way to reach me:
+          I&apos;m always interested in anything tech, automation, or politics. The fastest way to reach me:
         </p>
         <div className="mt-6 flex flex-wrap gap-6 font-mono text-[14px]">
           <a href="mailto:iamsirir@gmail.com" className="underline underline-offset-4 hover:bg-mark">
