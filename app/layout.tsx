@@ -51,9 +51,9 @@ export default function RootLayout({
               <Link href="/about" className="hover:text-ink">
                 About
               </Link>
-              <a href="mailto:iamsirir@gmail.com" className="hover:text-ink">
+              <Link href="/contact" className="hover:text-ink">
                 Contact
-              </a>
+              </Link>
             </div>
           </nav>
         </header>
