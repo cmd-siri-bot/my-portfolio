@@ -27,7 +27,7 @@ const experience: Role[] = [
     location: "Toronto, Canada",
     dates: "Nov 2025 - Present",
     points: [
-      "Work in sales at a hyper-growth fintech company headquartered in the Bay Area, CA.",
+      "I work in sales at a hyper-growth fintech company headquartered in the Bay Area, CA.",
       "Helped build, test, and iterate AI agents for Tipalti's GTM workflow to scale prospecting and qualification.",
       "#1 rep in qualified opportunities - exceeded quota every month while maintaining an excellent prospect experience. Q2'26 Rep of the Quarter.",
     ],
@@ -41,7 +41,7 @@ const experience: Role[] = [
     location: "Toronto, Canada",
     dates: "Jan 2025 - Nov 2025",
     points: [
-      "Went from zero to one in a bootstrapped, fast-paced environment - I called it start-up bootcamp.",
+      "Went from zero to one in a bootstrapped, fast-paced environment - it was my tech/start-up bootcamp.",
       "Drove early revenue growth, helping scale from $500K to $1M ARR by expanding into new, heavily regulated verticals: health and life sciences, energy and critical minerals, and defence and aerospace.",
       "Operated cross-functionally across sales, operations, and product delivery in a fast-moving environment with a small team of 5.",
     ],
