@@ -88,7 +88,7 @@ export default function HomeClient() {
             </div>
             <h3><a href="https://github.com/cmd-siri-bot">Executive Agent</a></h3>
             <p>
-              An agentic assistant that reads across the messy inputs of a working day — email, calendar, notes, documents — and produces a single prioritized brief: what needs a decision, what can wait, and what to say. Built around a plan-and-review loop so the agent proposes, and a human approves, before anything leaves the room.
+              An agentic assistant that reads across the messy inputs of a working day — email, calendar, notes, slack messages, salesforce updates, documents — and produces a single prioritized brief: what needs a decision, what can wait, and what to say. Built around a plan-and-review loop so the agent proposes, and a human approves, before anything leaves the room.
             </p>
             <a className="src" href="https://github.com/cmd-siri-bot">View source →</a>
           </div>
@@ -250,7 +250,7 @@ export default function HomeClient() {
           </div>
 
           <p className="resume-note reveal">
-            Prefer a PDF? <a href="mailto:iamsirir@gmail.com?subject=Resume%20request">Email me</a> and I&apos;ll send the latest version.
+            Prefer a PDF? <a href="mailto:iamsirir@gmail.com?subject=Resume%20request"> Email me</a> and I&apos;ll send the latest version.
           </p>
         </section>
 
@@ -274,10 +274,10 @@ export default function HomeClient() {
             <div>
               <h4>The storyteller</h4>
               <ul>
+                <li>GTM Strategy</li>
                 <li>Data storytelling</li>
-                <li>Campaign &amp; voter strategy</li>
-                <li>B2B sales narratives</li>
-                <li>Briefing notes &amp; memos</li>
+                <li>Sales narratives</li>
+                <li>Campaign strategy and execution</li>
                 <li>Stakeholder communication</li>
               </ul>
             </div>
@@ -286,7 +286,7 @@ export default function HomeClient() {
               <ul>
                 <li>Economic &amp; statistical analysis</li>
                 <li>Python</li>
-                <li>PowerShell</li>
+                <li>SQL and business intelligence analysis</li>
                 <li>LLM &amp; agentic workflows (Ollama)</li>
                 <li>Open-data pipelines</li>
               </ul>
