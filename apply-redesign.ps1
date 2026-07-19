@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Applies the oxblood / paper / black redesign to the sirirama.info Next.js site.
+    Applies the oxblood / paper / black redesign (with resume logos) to the sirirama.info Next.js site.
 
 .DESCRIPTION
     Backs up the existing app/globals.css, app/layout.tsx, and app/HomeClient.tsx
@@ -12,6 +12,11 @@
 
     If your app folder isn't at .\app, point at it explicitly:
         .\apply-redesign.ps1 -AppDir "src\app"
+
+.NOTE
+    This script does not touch your logo image files. Make sure
+    public/logos/tipalti.png, delphic.png, sussex.png,
+    government-of-canada.png, queens.png, and uoft.png already exist.
 #>
 
 param(
@@ -36,6 +41,19 @@ if (-not (Test-Path $AppDir)) {
 }
 
 Write-Host "Using app directory: $AppDir" -ForegroundColor Cyan
+
+# ---------- Check for logo files ----------
+$expectedLogos = @("tipalti.png", "delphic.png", "sussex.png", "government-of-canada.png", "queens.png", "uoft.png")
+$logosDir = "public/logos"
+if (Test-Path $logosDir) {
+    foreach ($logo in $expectedLogos) {
+        if (-not (Test-Path (Join-Path $logosDir $logo))) {
+            Write-Warning "Missing $logosDir/$logo — the resume section will show a broken image until it's added."
+        }
+    }
+} else {
+    Write-Warning "Could not find '$logosDir'. Make sure your logo PNGs live at public/logos/ before deploying."
+}
 
 # ---------- Backup existing files ----------
 $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
@@ -257,6 +275,21 @@ section:last-of-type { padding-bottom: 5rem; }
   letter-spacing: -0.01em;
 }
 .role .title { color: var(--oxblood); font-size: 0.9rem; font-weight: 500; margin-top: 0.1rem; }
+.role-head, .edu-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.role-logo, .edu-logo {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.35rem;
+}
 .role .blurb { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.92rem; font-style: italic; }
 .role ul { margin-top: 0.6rem; list-style: none; }
 .role li {
@@ -418,6 +451,7 @@ export default function RootLayout({
 $homeClientTsx = @'
 "use client";
 
+import Image from "next/image";
 import { useEffect } from "react";
 
 export default function HomeClient() {
@@ -554,8 +588,13 @@ export default function HomeClient() {
           <div className="role reveal">
             <div className="when meta">Nov 2025 — Present</div>
             <div>
-              <h4>Tipalti</h4>
-              <div className="title">Go-To-Market · Toronto, Canada</div>
+              <div className="role-head">
+                <Image src="/logos/tipalti.png" alt="Tipalti logo" width={40} height={40} className="role-logo" />
+                <div>
+                  <h4>Tipalti</h4>
+                  <div className="title">Go-To-Market · Toronto, Canada</div>
+                </div>
+              </div>
               <p className="blurb">Tipalti is a global fintech platform automating accounts payable, payments, and compliance workflows.</p>
               <ul>
                 <li>I work in sales at a hyper-growth fintech company headquartered in the Bay Area, CA.</li>
@@ -568,8 +607,13 @@ export default function HomeClient() {
           <div className="role reveal">
             <div className="when meta">Jan 2025 — Nov 2025</div>
             <div>
-              <h4>Delphic Research Group</h4>
-              <div className="title">Growth and Operations · Toronto, Canada</div>
+              <div className="role-head">
+                <Image src="/logos/delphic.png" alt="Delphic Research Group logo" width={40} height={40} className="role-logo" />
+                <div>
+                  <h4>Delphic Research Group</h4>
+                  <div className="title">Growth and Operations · Toronto, Canada</div>
+                </div>
+              </div>
               <p className="blurb">Delphic is a gov-tech start-up focused on competitive intelligence and decision-support for regulated industries.</p>
               <ul>
                 <li>Went from zero to one in a bootstrapped, fast-paced environment — it was my tech/start-up bootcamp.</li>
@@ -582,8 +626,13 @@ export default function HomeClient() {
           <div className="role reveal">
             <div className="when meta">Jan 2024 — Dec 2025</div>
             <div>
-              <h4>Sussex Strategy Group</h4>
-              <div className="title">Public Affairs Analyst · Toronto, Canada</div>
+              <div className="role-head">
+                <Image src="/logos/sussex.png" alt="Sussex Strategy Group logo" width={40} height={40} className="role-logo" />
+                <div>
+                  <h4>Sussex Strategy Group</h4>
+                  <div className="title">Public Affairs Analyst · Toronto, Canada</div>
+                </div>
+              </div>
               <p className="blurb">Sussex is a premier public affairs firm, helping organizations navigate bureaucracy and influence public opinion.</p>
               <ul>
                 <li>Lobbyist for some of the biggest, most influential organizations in Canada — the classic exit opportunity for most people leaving government.</li>
@@ -595,8 +644,13 @@ export default function HomeClient() {
           <div className="role reveal">
             <div className="when meta">Jun 2022 — Dec 2024</div>
             <div>
-              <h4>Government of Canada</h4>
-              <div className="title">Economist and Advisor · Ottawa, Canada</div>
+              <div className="role-head">
+                <Image src="/logos/government-of-canada.png" alt="Government of Canada logo" width={40} height={40} className="role-logo" />
+                <div>
+                  <h4>Government of Canada</h4>
+                  <div className="title">Economist and Advisor · Ottawa, Canada</div>
+                </div>
+              </div>
               <ul>
                 <li>Campaigned in and won three back-to-back federal elections.</li>
                 <li>Advised on Federal Budget and Economic Statement planning cycles — developing first-hand insight into how public-sector and regulated buyers evaluate cost, risk, and outcomes.</li>
@@ -610,7 +664,10 @@ export default function HomeClient() {
           <div className="edu reveal">
             <div className="when meta">MA</div>
             <div>
-              <h4>Queen&apos;s University</h4>
+              <div className="edu-head">
+                <Image src="/logos/queens.png" alt="Queen&apos;s University logo" width={40} height={40} className="edu-logo" />
+                <h4>Queen&apos;s University</h4>
+              </div>
               <p>Master of Arts (MA), Public Affairs</p>
               <p>Specialization in Public Finance</p>
             </div>
@@ -619,7 +676,10 @@ export default function HomeClient() {
           <div className="edu reveal">
             <div className="when meta">BA</div>
             <div>
-              <h4>University of Toronto</h4>
+              <div className="edu-head">
+                <Image src="/logos/uoft.png" alt="University of Toronto logo" width={40} height={40} className="edu-logo" />
+                <h4>University of Toronto</h4>
+              </div>
               <p>Honours Bachelor of Arts (BA)</p>
               <p>Economics and Politics (International Relations)</p>
             </div>
@@ -723,5 +783,5 @@ Write-Host ""
 Write-Host "Next steps:"
 Write-Host "  npm run dev                                          # preview at localhost:3000"
 Write-Host "  git add ."
-Write-Host "  git commit -m `"Redesign: single-page oxblood/paper layout`""
+Write-Host "  git commit -m \`"Redesign: resume logos + oxblood/paper layout\`""
 Write-Host "  git push origin main"

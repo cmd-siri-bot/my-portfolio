@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect } from "react";
 
 export default function HomeClient() {
@@ -73,7 +72,7 @@ export default function HomeClient() {
             </div>
             <h3><a href="https://github.com/cmd-siri-bot">Executive Agent</a></h3>
             <p>
-              An agentic assistant that reads across the messy inputs of a working day — email, calendar, notes, documents — and produces a single prioritized brief: what needs a decision, what can wait, and what to say. Built around a plan-and-review loop so the agent proposes, and a human approves, before anything leaves the room.
+              An agentic assistant that reads across the messy inputs of a working day — email, calendar, notes, slack messages, salesforce updates, documents — and produces a single prioritized brief: what needs a decision, what can wait, and what to say. Built around a plan-and-review loop so the agent proposes, and a human approves, before anything leaves the room.
             </p>
             <a className="src" href="https://github.com/cmd-siri-bot">View source →</a>
           </div>
@@ -124,7 +123,7 @@ export default function HomeClient() {
             <h2>Resume</h2>
           </div>
           <p className="resume-lede reveal">
-            An economist by training and a storyteller by nature. I create compelling narratives backed by data that have won over voters in Canada and buying committees in regulated industries.
+            An economist by training and a storyteller by nature. I create compelling narratives backed by data that have won over voters and buying committees.
           </p>
           <div className="resume-contact reveal">
             <a href="mailto:iamsirir@gmail.com">iamsirir@gmail.com</a>
@@ -137,13 +136,8 @@ export default function HomeClient() {
           <div className="role reveal">
             <div className="when meta">Nov 2025 — Present</div>
             <div>
-              <div className="role-head">
-                <Image src="/logos/tipalti.png" alt="Tipalti logo" width={40} height={40} className="role-logo" />
-                <div>
-                  <h4>Tipalti</h4>
-                  <div className="title">Go-To-Market · Toronto, Canada</div>
-                </div>
-              </div>
+              <h4>Tipalti</h4>
+              <div className="title">Go-To-Market · Toronto, Canada</div>
               <p className="blurb">Tipalti is a global fintech platform automating accounts payable, payments, and compliance workflows.</p>
               <ul>
                 <li>I work in sales at a hyper-growth fintech company headquartered in the Bay Area, CA.</li>
@@ -156,13 +150,8 @@ export default function HomeClient() {
           <div className="role reveal">
             <div className="when meta">Jan 2025 — Nov 2025</div>
             <div>
-              <div className="role-head">
-                <Image src="/logos/delphic.png" alt="Delphic Research Group logo" width={40} height={40} className="role-logo" />
-                <div>
-                  <h4>Delphic Research Group</h4>
-                  <div className="title">Growth and Operations · Toronto, Canada</div>
-                </div>
-              </div>
+              <h4>Delphic Research Group</h4>
+              <div className="title">Growth and Operations · Toronto, Canada</div>
               <p className="blurb">Delphic is a gov-tech start-up focused on competitive intelligence and decision-support for regulated industries.</p>
               <ul>
                 <li>Went from zero to one in a bootstrapped, fast-paced environment — it was my tech/start-up bootcamp.</li>
@@ -175,13 +164,8 @@ export default function HomeClient() {
           <div className="role reveal">
             <div className="when meta">Jan 2024 — Dec 2025</div>
             <div>
-              <div className="role-head">
-                <Image src="/logos/sussex.png" alt="Sussex Strategy Group logo" width={40} height={40} className="role-logo" />
-                <div>
-                  <h4>Sussex Strategy Group</h4>
-                  <div className="title">Public Affairs Analyst · Toronto, Canada</div>
-                </div>
-              </div>
+              <h4>Sussex Strategy Group</h4>
+              <div className="title">Public Affairs Analyst · Toronto, Canada</div>
               <p className="blurb">Sussex is a premier public affairs firm, helping organizations navigate bureaucracy and influence public opinion.</p>
               <ul>
                 <li>Lobbyist for some of the biggest, most influential organizations in Canada — the classic exit opportunity for most people leaving government.</li>
@@ -193,13 +177,8 @@ export default function HomeClient() {
           <div className="role reveal">
             <div className="when meta">Jun 2022 — Dec 2024</div>
             <div>
-              <div className="role-head">
-                <Image src="/logos/government-of-canada.png" alt="Government of Canada logo" width={40} height={40} className="role-logo" />
-                <div>
-                  <h4>Government of Canada</h4>
-                  <div className="title">Economist and Advisor · Ottawa, Canada</div>
-                </div>
-              </div>
+              <h4>Government of Canada</h4>
+              <div className="title">Economist and Advisor · Ottawa, Canada</div>
               <ul>
                 <li>Campaigned in and won three back-to-back federal elections.</li>
                 <li>Advised on Federal Budget and Economic Statement planning cycles — developing first-hand insight into how public-sector and regulated buyers evaluate cost, risk, and outcomes.</li>
@@ -213,10 +192,7 @@ export default function HomeClient() {
           <div className="edu reveal">
             <div className="when meta">MA</div>
             <div>
-              <div className="edu-head">
-                <Image src="/logos/queens.png" alt="Queen&apos;s University logo" width={40} height={40} className="edu-logo" />
-                <h4>Queen&apos;s University</h4>
-              </div>
+              <h4>Queen&apos;s University</h4>
               <p>Master of Arts (MA), Public Affairs</p>
               <p>Specialization in Public Finance</p>
             </div>
@@ -225,17 +201,14 @@ export default function HomeClient() {
           <div className="edu reveal">
             <div className="when meta">BA</div>
             <div>
-              <div className="edu-head">
-                <Image src="/logos/uoft.png" alt="University of Toronto logo" width={40} height={40} className="edu-logo" />
-                <h4>University of Toronto</h4>
-              </div>
+              <h4>University of Toronto</h4>
               <p>Honours Bachelor of Arts (BA)</p>
               <p>Economics and Politics (International Relations)</p>
             </div>
           </div>
 
           <p className="resume-note reveal">
-            Prefer a PDF? <a href="mailto:iamsirir@gmail.com?subject=Resume%20request">Email me</a> and I&apos;ll send the latest version.
+            Prefer a PDF? <a href="mailto:iamsirir@gmail.com?subject=Resume%20request"> Email me</a> and I&apos;ll send the latest version.
           </p>
         </section>
 
@@ -260,9 +233,9 @@ export default function HomeClient() {
               <h4>The storyteller</h4>
               <ul>
                 <li>Data storytelling</li>
-                <li>Campaign &amp; voter strategy</li>
-                <li>B2B sales narratives</li>
-                <li>Briefing notes &amp; memos</li>
+                <li>GTM Strategy</li>
+                <li>Sales Narratives</li>
+                <li>Campaign strategy and community engagement</li>
                 <li>Stakeholder communication</li>
               </ul>
             </div>
@@ -271,7 +244,7 @@ export default function HomeClient() {
               <ul>
                 <li>Economic &amp; statistical analysis</li>
                 <li>Python</li>
-                <li>PowerShell</li>
+                <li>SQL and business intelligence analysis</li>
                 <li>LLM &amp; agentic workflows (Ollama)</li>
                 <li>Open-data pipelines</li>
               </ul>
@@ -279,7 +252,7 @@ export default function HomeClient() {
           </div>
 
           <p className="offclock reveal">
-            Off the clock: history and politics rabbit holes, strategy games, and the occasional side project that starts as a one-off script and refuses to stay small.
+            Off the clock: cycling, history and politics, strategy games, and the occasional side project that starts as a one-off script and refuses to stay small.
           </p>
         </section>
 

@@ -26,7 +26,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Siri Rama — Economist by training, storyteller by nature",
   description:
-    "I build compelling narratives backed by data and the automation tools behind them. AI agents, ATIP automation, and open-data analysis, from Toronto.",
+    "I build compelling narratives backed by data and the automation tools behind them. AI agents, agentic workflows, and open-data analysis, from Toronto.",
 };
 
 export default function RootLayout({

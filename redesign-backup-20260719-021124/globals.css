@@ -195,21 +195,6 @@ section:last-of-type { padding-bottom: 5rem; }
   letter-spacing: -0.01em;
 }
 .role .title { color: var(--oxblood); font-size: 0.9rem; font-weight: 500; margin-top: 0.1rem; }
-.role-head, .edu-head {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-.role-logo, .edu-logo {
-  flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
-  object-fit: contain;
-  background: var(--paper-raised);
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  padding: 0.35rem;
-}
 .role .blurb { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.92rem; font-style: italic; }
 .role ul { margin-top: 0.6rem; list-style: none; }
 .role li {
