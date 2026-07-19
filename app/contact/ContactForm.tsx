@@ -2,11 +2,15 @@
 
 import { useState } from "react";
 
-// TODO: create a free form at https://formspree.io, then paste your form's
-// endpoint here (it looks like https://formspree.io/f/abcdwxyz).
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/mpqvdjpe";
+// TODO: paste your Formspree endpoint here (https://formspree.io/f/xxxx)
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
 type Status = "idle" | "submitting" | "success" | "error";
+
+const inputCls =
+  "mt-2 w-full border border-rule bg-transparent px-3.5 py-2.5 text-[16px] text-ink focus:border-oxblood focus:outline-none";
+const labelCls =
+  "block font-mono text-[12px] uppercase tracking-[.14em] text-soft";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -34,18 +38,16 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="border border-line p-6">
-        <p className="font-serif text-2xl">
-          <span className="hl">Message sent.</span>
-        </p>
-        <p className="mt-3 leading-relaxed text-ink-muted">
-          Thanks for reaching out â€” I&apos;ll get back to you soon.
+      <div className="border-l-2 border-oxblood pl-5">
+        <p className="font-serif text-[25px] font-semibold">Message sent.</p>
+        <p className="mt-2 text-soft">
+          Thanks for reaching out &mdash; I&apos;ll get back to you soon.
         </p>
         <button
           onClick={() => setStatus("idle")}
-          className="mt-5 font-mono text-[13px] underline underline-offset-4 hover:bg-mark"
+          className="mt-4 font-mono text-[12px] uppercase tracking-[.14em] underline underline-offset-4"
         >
-          Send another â†’
+          Send another &rarr;
         </button>
       </div>
     );
@@ -54,60 +56,22 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label
-          htmlFor="name"
-          className="block font-mono text-[12px] uppercase tracking-widest text-ink-muted"
-        >
-          Name
-        </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          required
-          className="mt-2 w-full border border-line bg-transparent px-3 py-2 text-[16px] focus:border-ink focus:outline-none"
-        />
+        <label htmlFor="name" className={labelCls}>Name</label>
+        <input id="name" name="name" type="text" required className={inputCls} />
       </div>
-
       <div>
-        <label
-          htmlFor="email"
-          className="block font-mono text-[12px] uppercase tracking-widest text-ink-muted"
-        >
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          className="mt-2 w-full border border-line bg-transparent px-3 py-2 text-[16px] focus:border-ink focus:outline-none"
-        />
+        <label htmlFor="email" className={labelCls}>Email</label>
+        <input id="email" name="email" type="email" required className={inputCls} />
       </div>
-
       <div>
-        <label
-          htmlFor="message"
-          className="block font-mono text-[12px] uppercase tracking-widest text-ink-muted"
-        >
-          Message
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          required
-          rows={6}
-          className="mt-2 w-full resize-y border border-line bg-transparent px-3 py-2 text-[16px] focus:border-ink focus:outline-none"
-        />
+        <label htmlFor="message" className={labelCls}>Message</label>
+        <textarea id="message" name="message" required rows={6} className={`${inputCls} resize-y`} />
       </div>
 
       {status === "error" && (
-        <p className="font-mono text-[13px] text-ink">
+        <p className="font-mono text-[13px] text-oxblood">
           Something went wrong. Please email me directly at{" "}
-          <a
-            href="mailto:iamsirir@gmail.com"
-            className="underline underline-offset-4 hover:bg-mark"
-          >
+          <a href="mailto:iamsirir@gmail.com" className="underline underline-offset-4">
             iamsirir@gmail.com
           </a>
           .
@@ -117,9 +81,9 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="border border-ink px-6 py-2.5 font-mono text-[13px] tracking-wide transition hover:bg-mark disabled:opacity-50"
+        className="rounded border border-oxblood bg-oxblood px-[26px] py-3 font-mono text-[13px] uppercase tracking-[.08em] text-paper transition hover:bg-[#672626] disabled:opacity-50"
       >
-        {status === "submitting" ? "Sendingâ€¦" : "Send message"}
+        {status === "submitting" ? "Sending..." : "Send message"}
       </button>
     </form>
   );

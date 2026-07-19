@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 type Role = {
   company: string;
-  logo: string; // file in /public/logos/ ; renders once you add it
+  logo: string;
   blurb?: string;
   title: string;
   location: string;
@@ -27,7 +27,7 @@ const experience: Role[] = [
     location: "Toronto, Canada",
     dates: "Nov 2025 - Present",
     points: [
-      "I work in sales at a hyper-growth fintech company headquartered in the Bay Area, CA.",
+      "Work in sales at a hyper-growth fintech company headquartered in the Bay Area, CA.",
       "Helped build, test, and iterate AI agents for Tipalti's GTM workflow to scale prospecting and qualification.",
       "#1 rep in qualified opportunities - exceeded quota every month while maintaining an excellent prospect experience. Q2'26 Rep of the Quarter.",
     ],
@@ -41,9 +41,9 @@ const experience: Role[] = [
     location: "Toronto, Canada",
     dates: "Jan 2025 - Nov 2025",
     points: [
-      "Went from zero to one in a bootstrapped, fast-paced environment - it was my tech/start-up bootcamp.",
+      "Went from zero to one in a bootstrapped, fast-paced environment - I called it start-up bootcamp.",
       "Drove early revenue growth, helping scale from $500K to $1M ARR by expanding into new, heavily regulated verticals: health and life sciences, energy and critical minerals, and defence and aerospace.",
-      "Operated cross-functionally across sales, operations, and product delivery in a fast-moving environment with a small team of 5.",
+      "Operated cross-functionally across sales, operations, and product delivery with a small team of 5.",
     ],
   },
   {
@@ -76,13 +76,11 @@ const experience: Role[] = [
 const education = [
   {
     school: "Queen's University",
-    logo: "/logos/queens.png",
     degree: "Master of Arts (MA), Public Affairs",
     detail: "Specialization in Public Finance",
   },
   {
     school: "University of Toronto",
-    logo: "/logos/uoft.png",
     degree: "Honours Bachelor of Arts (BA)",
     detail: "Economics and Politics (International Relations)",
   },
@@ -90,61 +88,64 @@ const education = [
 
 export default function Resume() {
   return (
-    <>
+    <div className="px-7">
       {/* Header */}
-      <section className="flex flex-wrap items-end justify-between gap-4 pt-20 pb-8 sm:pt-24">
-        <div>
-          <h1 className="font-serif text-4xl leading-tight">Siri Rama</h1>
-          <p className="mt-3 max-w-xl text-[16px] italic leading-relaxed text-ink-muted">
-            An economist by training and a storyteller by nature. I create
-            compelling narratives backed by data that have won over voters in
-            Canada and buying committees in regulated industries.
-          </p>
-        </div>
-        <div className="font-mono text-[13px] text-ink-muted">
-          <a href="mailto:iamsirir@gmail.com" className="block hover:text-ink">
-            iamsirir@gmail.com
-          </a>
-          <a
-            href="https://linkedin.com/in/sirirama"
-            target="_blank"
-            rel="noreferrer"
-            className="block hover:text-ink"
-          >
-            linkedin.com/in/sirirama
-          </a>
-          <span className="block">Toronto, Canada</span>
+      <section className="mx-auto max-w-[1080px] pt-[72px] pb-10">
+        <span className="eyebrow mb-3.5 block">// the_record</span>
+        <div className="flex flex-wrap items-end justify-between gap-5 border-b border-ink pb-6">
+          <div>
+            <h1 className="font-serif text-[clamp(34px,5vw,56px)] font-semibold leading-none">
+              Siri Rama
+            </h1>
+            <p className="mt-4 max-w-[46ch] text-[17px] italic leading-[1.5] text-soft">
+              An economist by training and a storyteller by nature. I create
+              compelling narratives backed by data that have won over voters in
+              Canada and buying committees in regulated industries.
+            </p>
+          </div>
+          <div className="font-mono text-[12px] uppercase tracking-[.1em] text-soft">
+            <a href="mailto:iamsirir@gmail.com" className="block hover:text-oxblood">
+              iamsirir@gmail.com
+            </a>
+            <a
+              href="https://linkedin.com/in/sirirama"
+              target="_blank" rel="noreferrer"
+              className="block hover:text-oxblood"
+            >
+              linkedin.com/in/sirirama
+            </a>
+            <span className="block">Toronto, Canada</span>
+          </div>
         </div>
       </section>
 
       {/* Experience */}
-      <section className="border-t border-line py-10">
-        <h2 className="font-mono text-[13px] uppercase tracking-widest text-ink-muted">
-          Experience
-        </h2>
-        <div className="mt-8 space-y-10">
+      <section className="mx-auto max-w-[1080px] py-8">
+        <span className="eyebrow mb-10 block">// experience</span>
+        <div className="space-y-[60px]">
           {experience.map((role) => (
-            <div key={role.company} className="grid gap-4 sm:grid-cols-[64px_1fr]">
+            <div key={role.company} className="grid gap-5 sm:grid-cols-[64px_1fr]">
               <Logo src={role.logo} alt={`${role.company} logo`} />
               <div>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4">
-                  <h3 className="font-serif text-2xl">{role.company}</h3>
-                  <span className="font-mono text-[12px] text-ink-muted">
+                  <h3 className="font-serif text-[25px] font-semibold">
+                    {role.company}
+                  </h3>
+                  <span className="font-mono text-[12px] uppercase tracking-[.14em] text-soft">
                     {role.dates}
                   </span>
                 </div>
                 {role.blurb && (
-                  <p className="mt-1 max-w-xl text-[15px] italic leading-relaxed text-ink-muted">
+                  <p className="mt-1 max-w-[62ch] text-[15px] italic leading-[1.5] text-soft">
                     {role.blurb}
                   </p>
                 )}
-                <p className="mt-2 text-ink-muted">
+                <p className="mt-2 font-mono text-[12px] uppercase tracking-[.14em] text-oxblood">
                   {role.title} &middot; {role.location}
                 </p>
-                <ul className="mt-3 space-y-2">
+                <ul className="mt-4 space-y-2.5">
                   {role.points.map((pt, j) => (
-                    <li key={j} className="max-w-xl leading-relaxed">
-                      <span className="mr-2 text-ink-muted">&mdash;</span>
+                    <li key={j} className="max-w-[62ch] border-l-2 border-rule pl-4 leading-[1.55]">
                       {pt}
                     </li>
                   ))}
@@ -156,37 +157,32 @@ export default function Resume() {
       </section>
 
       {/* Education */}
-      <section className="border-t border-line py-10">
-        <h2 className="font-mono text-[13px] uppercase tracking-widest text-ink-muted">
-          Education
-        </h2>
-        <div className="mt-8 space-y-8">
+      <section className="mx-auto max-w-[1080px] border-t border-rule py-10">
+        <span className="eyebrow mb-10 block">// education</span>
+        <div className="space-y-7">
           {education.map((ed) => (
-            <div key={ed.school} className="grid gap-4 sm:grid-cols-[64px_1fr]">
-              <Logo src={ed.logo} alt={`${ed.school} logo`} />
-              <div>
-                <h3 className="font-serif text-2xl">{ed.school}</h3>
-                <p className="mt-1">{ed.degree}</p>
-                <p className="text-ink-muted">{ed.detail}</p>
-              </div>
+            <div key={ed.school}>
+              <h3 className="font-serif text-[24px] font-semibold">{ed.school}</h3>
+              <p className="mt-1">{ed.degree}</p>
+              <p className="text-soft">{ed.detail}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Download */}
-      <section className="border-t border-line py-10">
-        <p className="max-w-xl leading-relaxed text-ink-muted">
+      <section className="mx-auto max-w-[1080px] border-t border-rule py-10">
+        <p className="max-w-[60ch] text-soft">
           Prefer a PDF?{" "}
           <a
             href="mailto:iamsirir@gmail.com?subject=Resume%20request"
-            className="text-ink underline underline-offset-4 hover:bg-mark"
+            className="underline underline-offset-4"
           >
             Email me
           </a>{" "}
           and I&apos;ll send the latest version.
         </p>
       </section>
-    </>
+    </div>
   );
 }
