@@ -29,7 +29,7 @@ const experience: Role[] = [
     location: "Toronto, Canada",
     dates: "Nov 2025 - Present",
     points: [
-      "Work in sales at a hyper-growth fintech company headquartered in the Bay Area, CA.",
+      "I work in sales at a hyper-growth fintech company headquartered in the Bay Area, CA.",
       "Helped build, test, and iterate AI agents for Tipalti's GTM workflow to scale prospecting and qualification.",
       "#1 rep in qualified opportunities - exceeded quota every month while maintaining an excellent prospect experience. Q2'26 Rep of the Quarter.",
     ],
