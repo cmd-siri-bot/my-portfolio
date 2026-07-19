@@ -49,7 +49,7 @@ export default function HomeClient() {
   return (
     <>
       {/* HERO */}
-      <section className="px-6 pt-28 pb-28 sm:pt-36">
+      <section className="px-6 pt-28 pb-28 sm:pt-36 flex justify-center">
         <div className={WRAP}>
           <div className="mb-20 flex flex-wrap justify-between gap-4 border-b border-ink pb-3.5">
             <span className="font-mono text-[12px] uppercase tracking-[.14em] text-ink">
@@ -75,7 +75,7 @@ export default function HomeClient() {
       </section>
 
       {/* THE RECORD */}
-      <section className="border-t border-rule px-6 py-28 sm:py-36">
+      <section className="border-t border-rule px-6 py-28 sm:py-36 flex justify-center">
         <div className={WRAP}>
           <div className="reveal mb-20 text-center">
             <span className="eyebrow mb-4 block">// the_record</span>
@@ -172,7 +172,7 @@ export default function HomeClient() {
       </section>
 
       {/* HOW I WORK */}
-      <section className="border-t border-rule px-6 py-28 sm:py-36">
+      <section className="border-t border-rule px-6 py-28 sm:py-36 flex justify-center">
         <div className={WRAP}>
           <div className="reveal mb-20 text-center">
             <span className="eyebrow mb-4 block">// how_i_work</span>
@@ -203,7 +203,7 @@ export default function HomeClient() {
       </section>
 
       {/* WHAT I BUILD */}
-      <section className="border-t border-rule px-6 py-28 sm:py-36">
+      <section className="border-t border-rule px-6 py-28 sm:py-36 flex justify-center">
         <div className={WRAP}>
           <div className="reveal mb-20 text-center">
             <span className="eyebrow mb-4 block">// what_i_build</span>
@@ -242,7 +242,7 @@ export default function HomeClient() {
       </section>
 
       {/* CONTACT */}
-      <section className="border-t border-rule px-6 py-28 sm:py-36">
+      <section className="border-t border-rule px-6 py-28 sm:py-36 flex justify-center">
         <div className={WRAP}>
           <div className="reveal mb-10 text-center">
             <span className="eyebrow block">// contact</span>

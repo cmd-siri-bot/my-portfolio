@@ -28,8 +28,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${newsreader.variable} ${jetbrains.variable}`}>
-        <header className="sticky top-0 z-50 border-b border-rule bg-paper">
-          <div className="mx-auto flex h-14 max-w-[800px] items-center justify-between px-7">
+        <header className="sticky top-0 z-50 flex justify-center border-b border-rule bg-paper">
+          <div className="flex h-14 w-full max-w-[800px] items-center justify-between px-7">
             <Link
               href="/"
               className="flex items-center gap-2.5 font-mono text-[12px] uppercase tracking-[.14em] text-ink no-underline"
@@ -58,8 +58,8 @@ export default function RootLayout({
 
         <main>{children}</main>
 
-        <footer className="mt-[88px] bg-ink text-paper">
-          <div className="mx-auto flex max-w-[800px] flex-wrap justify-between gap-3.5 px-7 py-[26px]">
+        <footer className="mt-[88px] flex justify-center bg-ink text-paper">
+          <div className="flex w-full max-w-[800px] flex-wrap justify-between gap-3.5 px-7 py-[26px]">
             <span className="font-mono text-[11px] uppercase tracking-[.14em] opacity-80">
               &copy; 2026 Siri Rama &middot; Toronto
             </span>

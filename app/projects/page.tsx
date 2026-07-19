@@ -25,7 +25,7 @@ function LockIcon() {
 export default function Projects() {
   return (
     <>
-      <section className="px-6 pt-28 pb-16 sm:pt-32">
+      <section className="px-6 pt-28 pb-16 sm:pt-32 flex justify-center">
         <div className={`${WRAP} text-center`}>
           <span className="eyebrow mb-4 block">// the_technical_file</span>
           <h1 className="font-serif text-[clamp(36px,6vw,60px)] font-semibold leading-[1.05] tracking-[-.02em]">
@@ -39,7 +39,7 @@ export default function Projects() {
         </div>
       </section>
 
-      <section className="px-6 pb-10">
+      <section className="px-6 pb-10 flex justify-center">
         <div className={`${WRAP} border-t border-rule`}>
           {projects.map((p) =>
             p.locked ? (
@@ -107,7 +107,7 @@ export default function Projects() {
         </div>
       </section>
 
-      <section className="px-6 py-16">
+      <section className="px-6 py-16 flex justify-center">
         <div className={`${WRAP} text-center`}>
           <p className="text-soft">
             More experiments live on{" "}

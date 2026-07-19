@@ -11,7 +11,7 @@ const WRAP = "mx-auto w-full max-w-[800px] px-6";
 export default function Contact() {
   return (
     <>
-      <section className="px-6 pt-28 pb-16 sm:pt-32">
+      <section className="px-6 pt-28 pb-16 sm:pt-32 flex justify-center">
         <div className={`${WRAP} text-center`}>
           <span className="eyebrow mb-4 block">// contact</span>
           <h1 className="font-serif text-[clamp(36px,6vw,60px)] font-semibold leading-[1.05] tracking-[-.02em]">
@@ -24,7 +24,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="px-6 py-14 sm:py-20">
+      <section className="px-6 py-14 sm:py-20 flex justify-center">
         <div className={`${WRAP} border-t border-rule pt-14 text-center`}>
           <span className="mb-3 block font-mono text-[12px] uppercase tracking-[.14em] text-oxblood">
             Email
@@ -38,7 +38,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="px-6 py-14 sm:py-20">
+      <section className="px-6 py-14 sm:py-20 flex justify-center">
         <div className={`${WRAP} border-t border-rule pt-14`}>
           <span className="mb-8 block text-center font-mono text-[12px] uppercase tracking-[.14em] text-oxblood">
             Or write here

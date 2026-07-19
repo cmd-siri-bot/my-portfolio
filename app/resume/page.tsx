@@ -92,7 +92,7 @@ export default function Resume() {
   return (
     <>
       {/* Header */}
-      <section className="px-6 pt-28 pb-10 sm:pt-32">
+      <section className="px-6 pt-28 pb-10 sm:pt-32 flex justify-center">
         <div className={`${WRAP} text-center`}>
           <span className="eyebrow mb-4 block">// the_record</span>
           <h1 className="font-serif text-[clamp(34px,5vw,54px)] font-semibold leading-none">
@@ -120,7 +120,7 @@ export default function Resume() {
       </section>
 
       {/* Experience */}
-      <section className="px-6 py-16 sm:py-24">
+      <section className="px-6 py-16 sm:py-24 flex justify-center">
         <div className={`${WRAP} border-t border-rule pt-16`}>
           <span className="eyebrow mb-12 block text-center">// experience</span>
           <div className="space-y-16">
@@ -159,7 +159,7 @@ export default function Resume() {
       </section>
 
       {/* Education */}
-      <section className="px-6 py-16 sm:py-24">
+      <section className="px-6 py-16 sm:py-24 flex justify-center">
         <div className={`${WRAP} border-t border-rule pt-16`}>
           <span className="eyebrow mb-12 block text-center">// education</span>
           <div className="space-y-8">
@@ -175,7 +175,7 @@ export default function Resume() {
       </section>
 
       {/* Download */}
-      <section className="px-6 py-16 sm:py-24">
+      <section className="px-6 py-16 sm:py-24 flex justify-center">
         <div className={`${WRAP} border-t border-rule pt-16 text-center`}>
           <p className="text-soft">
             Prefer a PDF?{" "}

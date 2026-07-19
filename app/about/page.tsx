@@ -26,7 +26,7 @@ const analyticSide = [
 export default function About() {
   return (
     <>
-      <section className="px-6 pt-28 pb-16 sm:pt-32">
+      <section className="px-6 pt-28 pb-16 sm:pt-32 flex justify-center">
         <div className={`${WRAP} text-center`}>
           <span className="eyebrow mb-4 block">// about</span>
           <h1 className="mx-auto max-w-[22ch] font-serif text-[clamp(32px,5.2vw,54px)] font-semibold leading-[1.1] tracking-[-.02em]">
@@ -35,7 +35,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-6 py-20 sm:py-28">
+      <section className="px-6 py-20 sm:py-28 flex justify-center">
         <div className={`${WRAP} border-t border-rule pt-16`}>
           <div className="space-y-6 text-[19px] leading-[1.65]">
             <p>
@@ -63,7 +63,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-6 py-20 sm:py-28">
+      <section className="px-6 py-20 sm:py-28 flex justify-center">
         <div className={`${WRAP} border-t border-rule pt-16`}>
           <span className="eyebrow mb-10 block text-center">// toolkit</span>
           <div className="grid gap-12 sm:grid-cols-2">
@@ -95,7 +95,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-6 py-20 sm:py-28">
+      <section className="px-6 py-20 sm:py-28 flex justify-center">
         <div className={`${WRAP} border-t border-rule pt-16 text-center`}>
           <p className="mx-auto max-w-[56ch] text-soft">
             Off the clock: history and politics rabbit holes, strategy games,
