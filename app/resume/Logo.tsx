@@ -1,10 +1,8 @@
 ﻿"use client";
 
 export default function Logo({ src, alt }: { src: string; alt: string }) {
-  // Fixed frame; the image shows once the file exists in /public/logos/.
-  // A missing file is hidden on error so the layout never breaks.
   return (
-    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-md border border-line bg-paper">
+    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-md border border-rule bg-paper">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}

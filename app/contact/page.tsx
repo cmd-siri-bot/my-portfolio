@@ -2,46 +2,48 @@
 import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact — Siri Rama",
-  description:
-    "Get in touch with Siri Rama — ” by email or the contact form.",
+  title: "Contact - Siri Rama",
+  description: "Get in touch with Siri Rama - by email or the contact form.",
 };
+
+const WRAP = "mx-auto w-full max-w-[800px] px-6";
 
 export default function Contact() {
   return (
     <>
-      <section className="pt-20 pb-10 sm:pt-24">
-        <h1 className="font-serif text-4xl leading-tight">
-          Let&apos;s <span className="hl">talk</span>.
-        </h1>
-        <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-ink-muted">
-          Campaigns, civic tech, AI, GTM, automation, or a data story that needs telling.
-           If it&apos;s in that world, I want to hear about it.
-        </p>
+      <section className="px-6 pt-28 pb-16 sm:pt-32">
+        <div className={`${WRAP} text-center`}>
+          <span className="eyebrow mb-4 block">// contact</span>
+          <h1 className="font-serif text-[clamp(36px,6vw,60px)] font-semibold leading-[1.05] tracking-[-.02em]">
+            Let&apos;s talk.
+          </h1>
+          <p className="mx-auto mt-6 max-w-[46ch] text-[clamp(19px,2.4vw,23px)] leading-[1.5] text-soft">
+            Campaigns, civic tech, GTM, or a data story that needs telling
+            &mdash; if it&apos;s in that world, I want to hear about it.
+          </p>
+        </div>
       </section>
 
-      {/* Direct email */}
-      <section className="border-t border-line py-8">
-        <div className="grid gap-2 sm:grid-cols-[150px_1fr]">
-          <span className="font-mono text-[13px] uppercase tracking-widest text-ink-muted">
+      <section className="px-6 py-14 sm:py-20">
+        <div className={`${WRAP} border-t border-rule pt-14 text-center`}>
+          <span className="mb-3 block font-mono text-[12px] uppercase tracking-[.14em] text-oxblood">
             Email
           </span>
           <a
             href="mailto:iamsirir@gmail.com"
-            className="font-serif text-2xl underline underline-offset-4 hover:bg-mark"
+            className="font-serif text-[clamp(24px,3.4vw,32px)] font-semibold underline underline-offset-4"
           >
             iamsirir@gmail.com
           </a>
         </div>
       </section>
 
-      {/* Form */}
-      <section className="border-t border-line py-10">
-        <div className="grid gap-6 sm:grid-cols-[150px_1fr]">
-          <span className="font-mono text-[13px] uppercase tracking-widest text-ink-muted">
+      <section className="px-6 py-14 sm:py-20">
+        <div className={`${WRAP} border-t border-rule pt-14`}>
+          <span className="mb-8 block text-center font-mono text-[12px] uppercase tracking-[.14em] text-oxblood">
             Or write here
           </span>
-          <div className="max-w-xl">
+          <div className="mx-auto max-w-[36rem]">
             <ContactForm />
           </div>
         </div>

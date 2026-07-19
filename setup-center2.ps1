@@ -1,10 +1,11 @@
 # ============================================================
-#  Center + breathing-room pass
-#    powershell -ExecutionPolicy Bypass -File .\setup-center.ps1
+#  Unify + widen centered column to 800px (header/footer/content)
+#    powershell -ExecutionPolicy Bypass -File .\setup-center2.ps1
 #
-#  Centers the content column, opens up spacing between sections,
-#  and removes the resume logo frames. Writes 7 files. Pure ASCII.
-#  (ContactForm is untouched - your Formspree ID stays put.)
+#  If the page still looked off-center before this, it was almost
+#  certainly a cache issue - hard refresh (Ctrl+Shift+R) after this
+#  runs, and confirm you're viewing localhost, not the live site
+#  (which only updates after git push).
 # ============================================================
 if (-not (Test-Path ".\package.json")) {
   Write-Host "ERROR: Run from C:\Users\iamsi\my-portfolio" -ForegroundColor Red
@@ -48,7 +49,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${newsreader.variable} ${jetbrains.variable}`}>
         <header className="sticky top-0 z-50 border-b border-rule bg-paper">
-          <div className="mx-auto flex h-14 max-w-[840px] items-center justify-between px-7">
+          <div className="mx-auto flex h-14 max-w-[800px] items-center justify-between px-7">
             <Link
               href="/"
               className="flex items-center gap-2.5 font-mono text-[12px] uppercase tracking-[.14em] text-ink no-underline"
@@ -78,7 +79,7 @@ export default function RootLayout({
         <main>{children}</main>
 
         <footer className="mt-[88px] bg-ink text-paper">
-          <div className="mx-auto flex max-w-[840px] flex-wrap justify-between gap-3.5 px-7 py-[26px]">
+          <div className="mx-auto flex max-w-[800px] flex-wrap justify-between gap-3.5 px-7 py-[26px]">
             <span className="font-mono text-[11px] uppercase tracking-[.14em] opacity-80">
               &copy; 2026 Siri Rama &middot; Toronto
             </span>
@@ -101,7 +102,7 @@ $content = @'
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
-const WRAP = "mx-auto w-full max-w-[720px] px-6";
+const WRAP = "mx-auto w-full max-w-[800px] px-6";
 
 export default function HomeClient() {
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -390,7 +391,7 @@ export const metadata: Metadata = {
     "Automation agents, ATIP tooling, and open-data analysis by Siri Rama.",
 };
 
-const WRAP = "mx-auto w-full max-w-[720px] px-6";
+const WRAP = "mx-auto w-full max-w-[800px] px-6";
 
 function LockIcon() {
   return (
@@ -522,7 +523,7 @@ export const metadata: Metadata = {
     "An economist by training and a storyteller by nature, working at the intersection of data and narrative.",
 };
 
-const WRAP = "mx-auto w-full max-w-[720px] px-6";
+const WRAP = "mx-auto w-full max-w-[800px] px-6";
 
 const narrativeSide = [
   "Data storytelling",
@@ -637,7 +638,7 @@ export const metadata: Metadata = {
     "Economist and storyteller. Go-to-market at Tipalti; formerly Delphic, Sussex Strategy, and the Government of Canada.",
 };
 
-const WRAP = "mx-auto w-full max-w-[720px] px-6";
+const WRAP = "mx-auto w-full max-w-[800px] px-6";
 
 type Role = {
   company: string;
@@ -825,28 +826,6 @@ export default function Resume() {
 '@
 Set-Content -Path ".\app\resume\page.tsx" -Value $content -Encoding UTF8
 
-Write-Host "Writing app/resume/Logo.tsx ..." -ForegroundColor Cyan
-$content = @'
-"use client";
-
-export default function Logo({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={alt}
-        className="h-full w-full object-contain"
-        onError={(e) => {
-          (e.currentTarget as HTMLImageElement).style.visibility = "hidden";
-        }}
-      />
-    </div>
-  );
-}
-'@
-Set-Content -Path ".\app\resume\Logo.tsx" -Value $content -Encoding UTF8
-
 Write-Host "Writing app/contact/page.tsx ..." -ForegroundColor Cyan
 $content = @'
 import type { Metadata } from "next";
@@ -857,7 +836,7 @@ export const metadata: Metadata = {
   description: "Get in touch with Siri Rama - by email or the contact form.",
 };
 
-const WRAP = "mx-auto w-full max-w-[720px] px-6";
+const WRAP = "mx-auto w-full max-w-[800px] px-6";
 
 export default function Contact() {
   return (
@@ -906,5 +885,6 @@ export default function Contact() {
 Set-Content -Path ".\app\contact\page.tsx" -Value $content -Encoding UTF8
 
 Write-Host ""
-Write-Host "Done. Hard-refresh (Ctrl+Shift+R) to see the centered layout." -ForegroundColor Green
-Write-Host "Then: git add . ; git commit -m 'Center layout, add spacing, borderless logos' ; git push" -ForegroundColor Yellow
+Write-Host "Done - every width (nav, footer, all pages) is now 800px, centered." -ForegroundColor Green
+Write-Host "Hard-refresh with Ctrl+Shift+R. If it still looks off, screenshot it." -ForegroundColor Yellow
+Write-Host "Then: git add . ; git commit -m 'Widen and unify centered column' ; git push" -ForegroundColor Yellow

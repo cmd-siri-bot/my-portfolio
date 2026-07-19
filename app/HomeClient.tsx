@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
-const WRAP = "mx-auto w-full max-w-[720px] px-6";
+const WRAP = "mx-auto w-full max-w-[800px] px-6";
 
 export default function HomeClient() {
   const timelineRef = useRef<HTMLDivElement>(null);
