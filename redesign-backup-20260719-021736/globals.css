@@ -104,32 +104,6 @@ section:last-of-type { padding-bottom: 5rem; }
 
 /* ---------- Hero ---------- */
 .hero { padding: 5.5rem 0 1rem; }
-.hero-grid {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 3rem;
-  flex-wrap: wrap-reverse;
-}
-.hero-copy { flex: 1 1 26rem; min-width: 0; }
-.hero-photo {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  margin: 0 auto;
-}
-.hero-photo-label { display: block; }
-.hero-photo-img {
-  width: 9rem;
-  height: 9rem;
-  object-fit: cover;
-  object-position: 50% 30%;
-  border: 1px solid var(--ink);
-  border-radius: 4px;
-  background: var(--paper-raised);
-}
 .hero .kicker { margin-bottom: 1.4rem; display: block; }
 .hero h1 {
   font-family: var(--font-spectral), serif;
@@ -334,8 +308,6 @@ footer { border-top: 1px solid var(--rule); margin-top: 2rem; }
 @media (max-width: 620px) {
   .nav-links { gap: 1rem; }
   .hero { padding-top: 3.2rem; }
-  .hero-grid { gap: 2rem; }
-  .hero-photo { margin-bottom: 0.5rem; }
   .role, .edu { grid-template-columns: 1fr; gap: 0.2rem; }
   .file-meta { flex-direction: column; gap: 0.15rem; }
   .toolkit { grid-template-columns: 1fr; }

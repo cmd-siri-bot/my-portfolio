@@ -45,29 +45,14 @@ export default function HomeClient() {
       <main id="top">
         {/* HERO */}
         <section className="hero">
-          <div className="hero-grid">
-            <div className="hero-copy">
-              <span className="kicker eyebrow">Toronto, Canada</span>
-              <h1>An economist by training, a <em>storyteller</em> by nature.</h1>
-              <p className="lede">
-                I&apos;m Siri Rama. I create compelling narratives backed by data — the kind that have won over voters and buying committees alike. The projects below are the other half of that craft: the automation and analysis tools I build to get from raw data to a story worth telling.
-              </p>
-              <div className="hero-actions">
-                <a className="btn" href="mailto:iamsirir@gmail.com">Email</a>
-                <a className="quiet" href="#projects">All projects ↓</a>
-              </div>
-            </div>
-            <div className="hero-photo">
-              <span className="eyebrow hero-photo-label">File 00 · Subject</span>
-              <Image
-                src="/profile.jpg"
-                alt="Siri Rama"
-                width={220}
-                height={220}
-                priority
-                className="hero-photo-img"
-              />
-            </div>
+          <span className="kicker eyebrow">Toronto, Canada</span>
+          <h1>An economist by training, a <em>storyteller</em> by nature.</h1>
+          <p className="lede">
+            I&apos;m Siri Rama. I create compelling narratives backed by data — the kind that have won over voters and buying committees alike. The projects below are the other half of that craft: the automation and analysis tools I build to get from raw data to a story worth telling.
+          </p>
+          <div className="hero-actions">
+            <a className="btn" href="mailto:iamsirir@gmail.com">Email</a>
+            <a className="quiet" href="#projects">All projects ↓</a>
           </div>
         </section>
 
