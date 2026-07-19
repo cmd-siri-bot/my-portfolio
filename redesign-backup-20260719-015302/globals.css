@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #7A2E2E;
+  --ink: #f5f5f0;
+  --soft: #c9a0a0;
+  --oxblood: #0a0a0a;
+  --oxblood-dark: #000000;
+  --rule: #5c2222;
+  --terminal: #0f0f0f;
+  --green: #2E6A57;
+  --green-bright: #6FC0A5;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-soft: var(--soft);
+  --color-oxblood: var(--oxblood);
+  --color-rule: var(--rule);
+  --color-terminal: var(--terminal);
+  --color-green: var(--green);
+  --color-green-bright: var(--green-bright);
+  --font-serif: var(--font-newsreader);
+  --font-mono: var(--font-jetbrains);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+}
+a { color: var(--ink); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+::selection { background: var(--ink); color: var(--paper); }
+
+/* mono utilities */
+.eyebrow {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .20em;
+  text-transform: uppercase; color: var(--soft);
+}
+.meta {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--soft);
+}
+
+/* scroll reveal */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* binary rain */
+@keyframes binary-fade {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.08; }
+}
+.binary-char {
+  animation: binary-fade 4s ease-in-out infinite;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink);
+  user-select: none;
+}
+
+/* tagline stack */
+.tagline-stack {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 6vw, 72px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .binary-char { animation: none; opacity: 0.04; }
+}

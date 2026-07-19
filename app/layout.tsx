@@ -1,12 +1,18 @@
-﻿import type { Metadata } from "next";
-import { Newsreader, JetBrains_Mono } from "next/font/google";
+import type { Metadata } from "next";
+import { Spectral, Public_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const newsreader = Newsreader({
+const spectral = Spectral({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-newsreader",
+  weight: ["500", "600"],
+  variable: "--font-spectral",
+  display: "swap",
+});
+
+const publicSans = Public_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-public-sans",
   display: "swap",
 });
 
@@ -18,9 +24,9 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Siri Rama â€” Economist & Storyteller",
+  title: "Siri Rama — Economist by training, storyteller by nature",
   description:
-    "I take data, find the insight, and give decision-makers clear options.",
+    "I build compelling narratives backed by data and the automation tools behind them. AI agents, ATIP automation, and open-data analysis, from Toronto.",
 };
 
 export default function RootLayout({
@@ -29,8 +35,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${newsreader.variable} ${jetbrains.variable}`}>
-      <body className="bg-paper text-ink antialiased">{children}</body>
+    <html
+      lang="en"
+      className={`${spectral.variable} ${publicSans.variable} ${jetbrains.variable}`}
+    >
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
