@@ -1,0 +1,198 @@
+/* account-dossier-agent case study — scoped under .dossier-case-study.
+   Uses only --token custom properties + fonts already defined in
+   app/globals.css. No new colors introduced. */
+
+.dossier-case-study {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.25rem 5rem;
+}
+
+.dossier-case-study .case-nav {
+  padding: 1.4rem 0 0;
+}
+.dossier-case-study .case-back {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.dossier-case-study .case-back:hover {
+  color: var(--oxblood);
+}
+
+.dossier-case-study .dossier-header {
+  padding: 3.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.dossier-case-study .dossier-kicker {
+  margin-top: 0.6rem;
+}
+.dossier-case-study .dossier-header h1 {
+  font-family: var(--font-spectral), serif;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-top: 0.9rem;
+  max-width: 34rem;
+}
+.dossier-case-study .dossier-lede {
+  margin-top: 1.2rem;
+  max-width: 36rem;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.dossier-case-study .stack-chips {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+}
+.dossier-case-study .stack-chips li {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  background: var(--oxblood-tint);
+  border-radius: 3px;
+  padding: 0.3rem 0.6rem;
+}
+
+.dossier-case-study .dossier-section {
+  padding: 3.2rem 0 0;
+}
+.dossier-case-study .dossier-section:last-of-type {
+  padding-bottom: 0;
+}
+
+.dossier-case-study .stage-list {
+  display: flex;
+  flex-direction: column;
+}
+.dossier-case-study .stage {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.2rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.dossier-case-study .stage:last-of-type {
+  border-bottom: none;
+}
+.dossier-case-study .stage-n {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.85rem;
+  color: var(--oxblood);
+  padding-top: 0.2rem;
+}
+.dossier-case-study .stage-n.small {
+  font-size: 0.75rem;
+}
+.dossier-case-study .stage h3 {
+  font-family: var(--font-spectral), serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.dossier-case-study .stage p {
+  margin-top: 0.4rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  max-width: 34rem;
+}
+
+.dossier-case-study .tier-grid {
+  margin-top: 0.4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem 1.6rem;
+}
+.dossier-case-study .tier-card {
+  border-top: 1px solid var(--ink);
+  padding-top: 0.7rem;
+}
+.dossier-case-study .tier-card h3 {
+  font-family: var(--font-spectral), serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-top: 0.35rem;
+}
+.dossier-case-study .tier-card p {
+  margin-top: 0.4rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.dossier-case-study .principle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem 1.8rem;
+}
+.dossier-case-study .principle {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.8rem;
+}
+.dossier-case-study .principle h3 {
+  font-family: var(--font-spectral), serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.dossier-case-study .principle p {
+  margin-top: 0.35rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.dossier-case-study .exhibit {
+  margin-top: 0.6rem;
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  background: var(--paper-raised);
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.dossier-case-study .exhibit-block p {
+  margin-top: 0.35rem;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.dossier-case-study .exhibit-block:nth-of-type(2) p {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.dossier-case-study .dossier-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.dossier-case-study .dossier-footer p {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  max-width: 32rem;
+}
+
+@media (max-width: 620px) {
+  .dossier-case-study .tier-grid,
+  .dossier-case-study .principle-grid {
+    grid-template-columns: 1fr;
+  }
+  .dossier-case-study .dossier-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

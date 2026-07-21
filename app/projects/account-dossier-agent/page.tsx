@@ -7,6 +7,6 @@ export const metadata: Metadata = {
     "A multi-agent pipeline that turns public company data into a cited sales dossier and evidence-grounded outreach draft.",
 };
 
-export default function AccountDossierAgentPage() {
+export default function Page() {
   return <AccountDossierAgentClient />;
 }
