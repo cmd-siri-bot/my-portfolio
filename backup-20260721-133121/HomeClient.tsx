@@ -55,11 +55,8 @@ export default function HomeClient() {
       <main id="top">
         {/* HERO */}
         <section className="hero">
-          <div
-            className="hero-grid"
-            style={{ display: "flex", alignItems: "center", gap: "40px", flexWrap: "wrap" }}
-          >
-            <div className="hero-copy" style={{ flex: "1 1 420px" }}>
+          <div className="hero-grid">
+            <div className="hero-copy">
               <span className="kicker eyebrow">Toronto, Canada</span>
               <h1>An economist by training, a <em>storyteller</em> by nature.</h1>
               <p className="lede">
@@ -70,8 +67,8 @@ export default function HomeClient() {
                 <a className="quiet" href="#projects">All projects ↓</a>
               </div>
             </div>
-            <div className="hero-photo" style={{ flex: "0 0 auto" }}>
-              <span className="eyebrow hero-photo-label">Subject</span>
+            <div className="hero-photo">
+              <span className="eyebrow hero-photo-label">File 00 · Subject</span>
               <Image
                 src="/profile.jpg"
                 alt="Siri Rama"
@@ -87,6 +84,7 @@ export default function HomeClient() {
         {/* PROJECTS */}
         <section id="projects">
           <div className="section-head reveal">
+            <span className="eyebrow">File 01</span>
             <h2>The case files.</h2>
           </div>
           <p className="section-intro reveal">
@@ -163,6 +161,7 @@ export default function HomeClient() {
         {/* ABOUT */}
         <section id="about" className="about">
           <div className="section-head reveal">
+            <span className="eyebrow">File 02</span>
             <h2>The numbers make the case. The story wins the room.</h2>
           </div>
           <p className="reveal">
@@ -206,7 +205,7 @@ export default function HomeClient() {
         {/* CONTACT */}
         <section id="contact">
           <div className="contact-card reveal">
-            <span className="eyebrow" style={{ display: "block", marginBottom: "0.8rem" }}>Contact</span>
+            <span className="eyebrow" style={{ display: "block", marginBottom: "0.8rem" }}>File 03 · Contact</span>
             <h2>Working on something at the intersection of data and narrative?</h2>
             <p>I&apos;m always interested in anything tech, automation, or politics. The fastest way to reach me:</p>
             <div className="contact-links">

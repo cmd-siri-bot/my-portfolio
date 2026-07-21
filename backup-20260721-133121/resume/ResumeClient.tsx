@@ -54,6 +54,7 @@ export default function ResumeClient() {
       <main id="top">
         <section id="resume">
           <div className="section-head reveal">
+            <span className="eyebrow">File 01 · Resume</span>
             <h2>Resume</h2>
           </div>
           <p className="resume-lede reveal">
