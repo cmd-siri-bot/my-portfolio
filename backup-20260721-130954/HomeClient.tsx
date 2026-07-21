@@ -85,20 +85,6 @@ export default function HomeClient() {
           <div className="file reveal">
             <div className="file-meta">
               <span className="eyebrow">File 01</span>
-              <span className="meta">Python · Anthropic API / Ollama · SQLite · SEC EDGAR · GDELT · 2026</span>
-            </div>
-            <h3><Link href="/projects/account-dossier-agent">Account Dossier Agent</Link></h3>
-            <p>
-              A multi-agent pipeline that turns a company&apos;s site, blog, job board, SEC filings, and news coverage into a cited research dossier — then drafts outreach that&apos;s only allowed to reference what the dossier actually verified. Every claim carries a verbatim quote checked programmatically against its source; if the model can&apos;t quote it exactly, the claim gets rejected, not silently invented. Corroboration is tiered — site content and ATS job data trust first, SEC filings second, GDELT news third — so a single stray headline never gets treated as verified fact.
-            </p>
-            <Link className="src" href="/projects/account-dossier-agent">Read the case file →</Link>
-            {" · "}
-            <a className="src" href="https://github.com/cmd-siri-bot/account-dossier-agent">View source →</a>
-          </div>
-
-          <div className="file reveal">
-            <div className="file-meta">
-              <span className="eyebrow">File 02</span>
               <span className="meta">Python · SQL · Local LLM (Ollama) · SEC EDGAR API · 2026</span>
             </div>
             <h3><Link href="/projects/lead-qualification-agent">Lead Qualification Agent</Link></h3>
@@ -112,7 +98,7 @@ export default function HomeClient() {
 
           <div className="file reveal">
             <div className="file-meta">
-              <span className="eyebrow">File 03</span>
+              <span className="eyebrow">File 02</span>
               <span className="meta">Python · LLM · Agentic workflow · 2026</span>
             </div>
             <h3><a href="https://github.com/cmd-siri-bot">Executive Agent</a></h3>
@@ -124,7 +110,7 @@ export default function HomeClient() {
 
           <div className="file reveal">
             <div className="file-meta">
-              <span className="eyebrow">File 04</span>
+              <span className="eyebrow">File 03</span>
               <span className="meta">PowerShell · Ollama · Open source · 2026</span>
             </div>
             <h3><a href="https://github.com/cmd-siri-bot">Downloads Butler</a></h3>
@@ -136,7 +122,7 @@ export default function HomeClient() {
 
           <div className="file reveal">
             <div className="file-meta">
-              <span className="eyebrow">File 05</span>
+              <span className="eyebrow">File 04</span>
               <span className="meta">Work in progress</span>
             </div>
             <h3>ATIP Automation <span className="wip">In progress</span></h3>
@@ -146,7 +132,7 @@ export default function HomeClient() {
 
           <div className="file reveal">
             <div className="file-meta">
-              <span className="eyebrow">File 06</span>
+              <span className="eyebrow">File 05</span>
               <span className="meta">Python · Data viz · Civic tech · 2026</span>
             </div>
             <h3><a href="https://github.com/cmd-siri-bot">City of Toronto Open Data</a></h3>
