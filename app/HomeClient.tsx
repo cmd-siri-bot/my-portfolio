@@ -180,9 +180,9 @@ export default function HomeClient() {
               <h4>The storyteller</h4>
               <ul>
                 <li>Data storytelling</li>
-                <li>Campaign &amp; voter strategy</li>
+                <li>GTM Strategy</li>
                 <li>B2B sales narratives</li>
-                <li>Briefing notes &amp; memos</li>
+                <li>Executive Briefs</li>
                 <li>Stakeholder communication</li>
               </ul>
             </div>
@@ -191,7 +191,7 @@ export default function HomeClient() {
               <ul>
                 <li>Economic &amp; statistical analysis</li>
                 <li>Python</li>
-                <li>PowerShell</li>
+                <li>SQL and business intelligence analysis</li>
                 <li>LLM &amp; agentic workflows (Ollama)</li>
                 <li>Open-data pipelines</li>
               </ul>
