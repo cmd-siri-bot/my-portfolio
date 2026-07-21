@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect } from "react";
 
 export default function HomeClient() {
@@ -85,32 +84,18 @@ export default function HomeClient() {
           <div className="file reveal">
             <div className="file-meta">
               <span className="eyebrow">File 01</span>
-              <span className="meta">Python · SQL · Local LLM (Ollama) · SEC EDGAR API · 2026</span>
-            </div>
-            <h3><Link href="/projects/lead-qualification-agent">Lead Qualification Agent</Link></h3>
-            <p>
-              A lead-qualification pipeline built to solve the problem I run into at Tipalti every week: inbound funnels drown reps in volume, and the real buyers go stale while triage takes days. It resolves messy company names against real filings data, scores leads against an auditable SQL model a RevOps lead could read and retune without touching code, and reserves the LLM for the one job only it&apos;s suited for — reading intent out of an ambiguous message. On synthetic test data: 99.7% company-resolution accuracy, 99.1% precision and 100% recall on high-priority leads, and a clean 10/10 against adversarial prompt-injection attempts.
-            </p>
-            <Link className="src" href="/projects/lead-qualification-agent">Read the case file →</Link>
-            {" · "}
-            <a className="src" href="https://github.com/cmd-siri-bot/lead-triage-agent">View source →</a>
-          </div>
-
-          <div className="file reveal">
-            <div className="file-meta">
-              <span className="eyebrow">File 02</span>
               <span className="meta">Python · LLM · Agentic workflow · 2026</span>
             </div>
             <h3><a href="https://github.com/cmd-siri-bot">Executive Agent</a></h3>
             <p>
-              An agentic assistant that reads across the messy inputs of a working day — email, calendar, notes, documents — and produces a single prioritized brief: what needs a decision, what can wait, and what to say. Built around a plan-and-review loop so the agent proposes, and a human approves, before anything leaves the room.
+              An agentic assistant that reads across the messy inputs of a working day — email, calendar, notes, slack messages, salesforce updates, documents — and produces a single prioritized brief: what needs a decision, what can wait, and what to say. Built around a plan-and-review loop so the agent proposes, and a human approves, before anything leaves the room.
             </p>
             <a className="src" href="https://github.com/cmd-siri-bot">View source →</a>
           </div>
 
           <div className="file reveal">
             <div className="file-meta">
-              <span className="eyebrow">File 03</span>
+              <span className="eyebrow">File 02</span>
               <span className="meta">PowerShell · Ollama · Open source · 2026</span>
             </div>
             <h3><a href="https://github.com/cmd-siri-bot">Downloads Butler</a></h3>
@@ -122,7 +107,7 @@ export default function HomeClient() {
 
           <div className="file reveal">
             <div className="file-meta">
-              <span className="eyebrow">File 04</span>
+              <span className="eyebrow">File 03</span>
               <span className="meta">Work in progress</span>
             </div>
             <h3>ATIP Automation <span className="wip">In progress</span></h3>
@@ -132,7 +117,7 @@ export default function HomeClient() {
 
           <div className="file reveal">
             <div className="file-meta">
-              <span className="eyebrow">File 05</span>
+              <span className="eyebrow">File 04</span>
               <span className="meta">Python · Data viz · Civic tech · 2026</span>
             </div>
             <h3><a href="https://github.com/cmd-siri-bot">City of Toronto Open Data</a></h3>
@@ -265,7 +250,7 @@ export default function HomeClient() {
           </div>
 
           <p className="resume-note reveal">
-            Prefer a PDF? <a href="mailto:iamsirir@gmail.com?subject=Resume%20request">Email me</a> and I&apos;ll send the latest version.
+            Prefer a PDF? <a href="mailto:iamsirir@gmail.com?subject=Resume%20request"> Email me</a> and I&apos;ll send the latest version.
           </p>
         </section>
 
@@ -289,10 +274,10 @@ export default function HomeClient() {
             <div>
               <h4>The storyteller</h4>
               <ul>
+                <li>GTM Strategy</li>
                 <li>Data storytelling</li>
-                <li>Campaign &amp; voter strategy</li>
-                <li>B2B sales narratives</li>
-                <li>Briefing notes &amp; memos</li>
+                <li>Sales narratives</li>
+                <li>Campaign strategy and execution</li>
                 <li>Stakeholder communication</li>
               </ul>
             </div>
@@ -301,7 +286,7 @@ export default function HomeClient() {
               <ul>
                 <li>Economic &amp; statistical analysis</li>
                 <li>Python</li>
-                <li>PowerShell</li>
+                <li>SQL and business intelligence analysis</li>
                 <li>LLM &amp; agentic workflows (Ollama)</li>
                 <li>Open-data pipelines</li>
               </ul>
