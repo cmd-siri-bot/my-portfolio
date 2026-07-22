@@ -1,4 +1,4 @@
-import type { QualificationData, PublicContext } from "@/lib/handoff-console/types";
+import type { QualificationData, PublicContext } from "@/lib/types";
 import { classify } from "./providers";
 
 const ALLOWED_INDUSTRIES = new Set<QualificationData["industry"]>([

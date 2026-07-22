@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { QualificationData } from "@/lib/handoff-console/types";
-import { PRESETS } from "@/lib/handoff-console/presets";
+import type { QualificationData } from "@/lib/types";
+import { PRESETS } from "@/lib/presets";
 import {
   Option,
   accountingSoftwareOptions,
@@ -75,7 +75,7 @@ function NumberInput({
 }) {
   return (
     <input
-      className="rc-input"
+      className={value == null ? "rc-input rc-input-unknown" : "rc-input"}
       type="number"
       min={min}
       max={max}
@@ -107,7 +107,7 @@ function SelectInput<T extends string>({
 }) {
   return (
     <select
-      className="rc-input rc-select"
+      className={value == null ? "rc-input rc-input-unknown" : "rc-input"}
       value={value ?? ""}
       onChange={(e) => onChange((e.target.value || null) as T | null)}
     >
@@ -131,7 +131,7 @@ function TriStateInput({
   const current = value === null ? "" : value ? "true" : "false";
   return (
     <select
-      className="rc-input rc-select"
+      className={value == null ? "rc-input rc-input-unknown" : "rc-input"}
       value={current}
       onChange={(e) => {
         const v = e.target.value;
@@ -170,8 +170,18 @@ export default function QualificationForm({ data, onChange }: QualificationFormP
     }, 450);
   }
 
+  function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (e.key !== "Enter") return;
+    const target = e.target as HTMLElement;
+    if (target.tagName !== "INPUT") return;
+    e.preventDefault();
+    const focusable = Array.from(e.currentTarget.querySelectorAll<HTMLElement>("input, select"));
+    const idx = focusable.indexOf(target);
+    focusable[idx + 1]?.focus();
+  }
+
   return (
-    <div className="rc-form-shell">
+    <div className="rc-form-shell" onKeyDown={handleKeyDown}>
       {loadingPreset && (
         <div className="rc-form-loading">
           <span className="rc-form-loading-spinner" aria-hidden="true" />
@@ -193,6 +203,7 @@ export default function QualificationForm({ data, onChange }: QualificationFormP
             </button>
           ))}
         </div>
+        <p className="rc-dont-know-hint">Unknowns aren&apos;t gaps — they become your call plan.</p>
       </div>
 
       <fieldset className="rc-section">
@@ -207,7 +218,7 @@ export default function QualificationForm({ data, onChange }: QualificationFormP
               placeholder="Acme Inc."
             />
           </Field>
-          <Field label="Website" hint="Used only for public-context lookup, never for the math">
+          <Field label="Website" hint="Used only for the optional public-context lookup, never for the verdict">
             <TextInput
               value={data.website ?? ""}
               onChange={(v) => set("website", v === "" ? undefined : v)}
@@ -216,7 +227,7 @@ export default function QualificationForm({ data, onChange }: QualificationFormP
           </Field>
           <Field label="Industry *">
             <select
-              className="rc-input rc-select"
+              className="rc-input"
               value={data.industry}
               onChange={(e) => set("industry", e.target.value as QualificationData["industry"])}
             >

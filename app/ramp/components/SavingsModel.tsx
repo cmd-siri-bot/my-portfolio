@@ -1,13 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { getSavingsHeaderText } from "@/lib/handoff-console/engine";
-import type { SavingsModel as SavingsModelResult } from "@/lib/handoff-console/engine";
+import type { Model } from "@/lib/model";
+import { money } from "@/lib/model";
+import type { AssumptionKey, AssumptionValues } from "@/lib/assumptions";
+import AssumptionChip from "./AssumptionChip";
 import UnconfirmedFlag from "./UnconfirmedFlag";
-
-function money(value: number): string {
-  return `$${Math.round(value).toLocaleString("en-CA")}`;
-}
 
 function useCountUp(target: number, durationMs = 700): number {
   const [value, setValue] = useState(0);
@@ -37,52 +35,58 @@ function useCountUp(target: number, durationMs = 700): number {
   return value;
 }
 
-function CountingRange({ low, high }: { low: number; high: number }) {
-  const animatedLow = useCountUp(low);
-  const animatedHigh = useCountUp(high);
-  return (
-    <>
-      {money(animatedLow)}–{money(animatedHigh)}/yr
-    </>
-  );
+function CountingValue({ value }: { value: number }) {
+  const animated = useCountUp(value);
+  return <>{money(animated)}/yr</>;
 }
 
 interface SavingsModelTabProps {
-  model: SavingsModelResult;
+  model: Model;
+  assumptionValues: AssumptionValues;
+  onAssumptionChange: (key: AssumptionKey, value: number) => void;
 }
 
-export default function SavingsModel({ model }: SavingsModelTabProps) {
+export default function SavingsModel({ model, assumptionValues, onAssumptionChange }: SavingsModelTabProps) {
+  const heroLine = model.lines.find((l) => l.key === model.heroLineKey) ?? null;
+
   return (
     <div className="rc-savings">
-      <div className="rc-savings-hero">
-        <span className="rc-savings-hero-label">Total confirmed savings / yr</span>
-        <div className="rc-savings-hero-value">
-          <CountingRange low={model.totalLow} high={model.totalHigh} />
+      {heroLine && heroLine.value != null && (
+        <div className="rc-savings-hero">
+          <span className="rc-savings-hero-label">{heroLine.label}</span>
+          <div className="rc-savings-hero-value">
+            <CountingValue value={heroLine.value} />
+          </div>
+          <p className="rc-savings-hero-caption">
+            {model.computableCount} of {model.lines.length} lines computable — every figure traceable below.
+          </p>
+          {heroLine.sayItOnCall && <p className="rc-say-it">&ldquo;{heroLine.sayItOnCall}&rdquo;</p>}
         </div>
-        <p className="rc-savings-hero-caption">{getSavingsHeaderText(model)}</p>
-      </div>
+      )}
 
-      <div className="rc-savings-grid">
+      <div className="rc-model-lines">
         {model.lines.map((line) => (
-          <div
-            key={line.label}
-            className={
-              line.status === "confirmed" ? "rc-savings-card" : "rc-savings-card rc-savings-card-unconfirmed"
-            }
-          >
-            <div className="rc-savings-card-top">
-              <span className="rc-savings-card-label">{line.label}</span>
-              {line.status === "unconfirmed" && <UnconfirmedFlag />}
-            </div>
-            {line.status === "confirmed" && line.low != null && line.high != null && (
-              <div className="rc-savings-card-value">
-                <CountingRange low={line.low} high={line.high} />
+          <div key={line.key} className={line.computable ? "rc-model-line" : "rc-model-line rc-model-line-unconfirmed"}>
+            <div className="rc-model-line-top">
+              <div className="rc-model-line-left">
+                {line.computable && <span className="rc-marker">○</span>}
+                <span className="rc-model-line-label">{line.label}</span>
               </div>
+              {line.computable && line.value != null ? (
+                <span className="rc-model-line-value rc-mono">{money(line.value)}/yr</span>
+              ) : (
+                <UnconfirmedFlag />
+              )}
+            </div>
+            <p className="rc-model-line-note">{line.computable ? "" : line.missingFieldsNote}</p>
+            {line.computable && line.formula && line.assumptionKey && (
+              <AssumptionChip
+                assumptionKey={line.assumptionKey}
+                formula={line.formula}
+                values={assumptionValues}
+                onChange={onAssumptionChange}
+              />
             )}
-            <p className="rc-savings-card-basis">
-              {line.status === "confirmed" ? line.basis : line.missingFieldsNote}
-            </p>
-            <p className="rc-savings-card-why">{line.why}</p>
           </div>
         ))}
       </div>
