@@ -1,4 +1,4 @@
-import type { QualificationData } from "@/lib/handoff-console/types";
+import type { QualificationData } from "@/lib/types";
 
 export interface Option<T extends string> {
   value: T;
@@ -42,7 +42,7 @@ export const currentSolutionOptions: Option<NonNullable<QualificationData["curre
   { value: "corporate-visa-mastercard", label: "Corporate Visa/Mastercard" },
   { value: "amex", label: "Amex" },
   { value: "brex", label: "Brex" },
-  { value: "divvy-bill.com", label: "Divvy (Bill.com)" },
+  { value: "divvy-bill.com", label: "BILL Spend & Expense (formerly Divvy)" },
   { value: "other", label: "Other" },
 ];
 

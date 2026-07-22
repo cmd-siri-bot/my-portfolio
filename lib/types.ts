@@ -29,8 +29,9 @@ export interface QualificationData {
   triggerEvent: string | null;
 }
 
-// Strictly separate — must NEVER appear as a parameter to any function in engine.ts,
-// callPlan.ts, or outputs.ts.
+// Strictly separate — must NEVER appear as a parameter to any function in
+// model.ts, verdict.ts, questions.ts, or outputs.ts. It's a bonus, informational
+// panel only; qualification judgment is confirmed-data-only.
 export interface PublicContext {
   industryGuess: QualificationData["industry"] | null;
   headcountBandGuess: string | null;

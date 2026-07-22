@@ -17,7 +17,7 @@ export const CURRENT_SOLUTION_LABELS: Record<
   "corporate-visa-mastercard": "a corporate Visa/Mastercard program",
   amex: "Amex",
   brex: "Brex",
-  "divvy-bill.com": "Divvy (Bill.com)",
+  "divvy-bill.com": "BILL Spend & Expense (formerly Divvy)",
   other: "another tool",
 };
 
@@ -53,4 +53,34 @@ export const TOP_PAIN_LABELS: Record<NonNullable<QualificationData["topPain"]>, 
   "fraud-risk": "Fraud risk",
   "accounting-sync": "Accounting sync",
   "fx-costs": "FX costs",
+};
+
+export const REVENUE_BAND_LABELS: Record<NonNullable<QualificationData["revenueBand"]>, string> = {
+  "pre-revenue": "Pre-revenue",
+  "<1M": "<$1M",
+  "1M-5M": "$1M–$5M",
+  "5M-20M": "$5M–$20M",
+  "20M+": "$20M+",
+};
+
+export const FUNDING_STAGE_LABELS: Record<NonNullable<QualificationData["fundingStage"]>, string> = {
+  bootstrapped: "Bootstrapped",
+  seed: "Seed",
+  "seriesA+": "Series A+",
+  "n/a": "N/A",
+};
+
+export const PROVINCE_LABELS: Record<NonNullable<QualificationData["province"]>, string> = {
+  ON: "Ontario",
+  BC: "British Columbia",
+  AB: "Alberta",
+  QC: "Quebec",
+  Other: "Other",
+};
+
+export const TIMELINE_LABELS: Record<NonNullable<QualificationData["timeline"]>, string> = {
+  immediate: "Immediate",
+  "this-quarter": "This quarter",
+  "next-quarter": "Next quarter",
+  exploring: "Exploring",
 };

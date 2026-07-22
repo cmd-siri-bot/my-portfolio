@@ -1,4 +1,4 @@
-import type { PublicContext, QualificationData } from "@/lib/handoff-console/types";
+import type { PublicContext, QualificationData } from "@/lib/types";
 import { industryOptions } from "./formOptions";
 
 function industryLabel(value: QualificationData["industry"] | null): string {
@@ -21,7 +21,7 @@ export default function PublicContextCard({
 
   return (
     <div className="rc-context-card">
-      <span className="rc-context-caption">Public context — not used in calculations.</span>
+      <span className="rc-context-caption">Bonus · Public context — never used in the verdict or the model</span>
 
       {context.oneLineDescription && <p className="rc-context-desc">{context.oneLineDescription}</p>}
 
