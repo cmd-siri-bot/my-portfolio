@@ -1,0 +1,547 @@
+/* The Handoff Console — scoped entirely under .ramp-console.
+   Deliberately its own dark "case study" surface with a single accent
+   color, per spec — does not touch app/globals.css or any shared token.
+   Reuses only the site's existing fonts (--font-spectral / --font-public-sans
+   / --font-jetbrains), already set globally on <html> in app/layout.tsx. */
+
+.ramp-console {
+  --rc-bg: #0b0d10;
+  --rc-bg-raised: #14171b;
+  --rc-ink: #edeff2;
+  --rc-ink-soft: #9aa1ac;
+  --rc-rule: #262b31;
+  --rc-accent: #4ade80;
+  --rc-accent-soft: rgba(74, 222, 128, 0.12);
+  --rc-amber: #f5b942;
+  --rc-amber-soft: rgba(245, 185, 66, 0.12);
+  --rc-max: 68rem;
+
+  background: var(--rc-bg);
+  color: var(--rc-ink);
+  min-height: 100vh;
+  font-family: var(--font-public-sans), -apple-system, sans-serif;
+  overflow-wrap: break-word;
+}
+
+.ramp-console a {
+  color: var(--rc-accent);
+}
+
+.ramp-console .rc-shell {
+  max-width: var(--rc-max);
+  margin: 0 auto;
+  padding: 0 1.25rem 5rem;
+}
+
+/* ---------- Back link ---------- */
+.ramp-console .rc-back-row {
+  padding: 1.4rem 0 0;
+}
+.ramp-console .rc-back {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rc-ink-soft);
+}
+.ramp-console .rc-back:hover {
+  color: var(--rc-accent);
+  text-decoration: none;
+}
+
+/* ---------- Header ---------- */
+.ramp-console .rc-header {
+  padding: 3rem 0 2.5rem;
+  border-bottom: 1px solid var(--rc-rule);
+}
+.ramp-console .rc-eyebrow {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rc-accent);
+}
+.ramp-console .rc-header h1 {
+  font-family: var(--font-spectral), serif;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 5vw, 2.7rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-top: 0.9rem;
+  max-width: 38rem;
+  color: var(--rc-ink);
+}
+.ramp-console .rc-lede {
+  margin-top: 1.1rem;
+  max-width: 38rem;
+  color: var(--rc-ink-soft);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+/* ---------- Section headings (shared by form + results) ---------- */
+.ramp-console .rc-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin: 3rem 0 1.4rem;
+}
+.ramp-console .rc-section-head h2 {
+  font-family: var(--font-spectral), serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--rc-ink);
+}
+
+/* ---------- Preset picker ---------- */
+.ramp-console .rc-presets {
+  padding: 1.6rem 0 0.4rem;
+}
+.ramp-console .rc-presets-label {
+  display: block;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rc-ink-soft);
+  margin-bottom: 0.7rem;
+}
+.ramp-console .rc-presets-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.ramp-console .rc-preset-btn {
+  font-family: var(--font-public-sans), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--rc-ink);
+  background: var(--rc-bg-raised);
+  border: 1px solid var(--rc-rule);
+  border-radius: 4px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.ramp-console .rc-preset-btn:hover {
+  border-color: var(--rc-accent);
+  color: var(--rc-accent);
+}
+.ramp-console .rc-preset-btn:focus-visible {
+  outline: 2px solid var(--rc-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Qualification form (the hero) ---------- */
+.ramp-console .rc-form-shell {
+  margin-top: 1.2rem;
+  background: var(--rc-bg-raised);
+  border: 1px solid var(--rc-rule);
+  border-radius: 8px;
+  padding: 0.4rem 1.6rem 1.8rem;
+}
+.ramp-console .rc-section {
+  border: none;
+  padding: 1.8rem 0 0;
+  margin: 0;
+}
+.ramp-console .rc-section + .rc-section {
+  border-top: 1px solid var(--rc-rule);
+  margin-top: 1.8rem;
+}
+.ramp-console .rc-section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--font-spectral), serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--rc-ink);
+  padding: 0;
+  margin-bottom: 1.2rem;
+}
+.ramp-console .rc-section-n {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.78rem;
+  color: var(--rc-accent);
+}
+
+.ramp-console .rc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem 1.4rem;
+}
+
+.ramp-console .rc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.ramp-console .rc-field-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--rc-ink-soft);
+}
+.ramp-console .rc-field-hint {
+  font-size: 0.75rem;
+  color: var(--rc-ink-soft);
+  opacity: 0.75;
+}
+
+.ramp-console .rc-input {
+  font-family: var(--font-public-sans), sans-serif;
+  font-size: 0.92rem;
+  color: var(--rc-ink);
+  background: var(--rc-bg);
+  border: 1px solid var(--rc-rule);
+  border-radius: 4px;
+  padding: 0.55rem 0.7rem;
+  width: 100%;
+}
+.ramp-console .rc-input::placeholder {
+  color: var(--rc-ink-soft);
+  opacity: 0.6;
+}
+.ramp-console .rc-input:focus-visible {
+  outline: none;
+  border-color: var(--rc-accent);
+}
+.ramp-console .rc-select {
+  appearance: auto;
+}
+
+/* ---------- Public context card ---------- */
+.ramp-console .rc-context-card {
+  margin-top: 1.2rem;
+  background: transparent;
+  border: 1px dashed var(--rc-rule);
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem;
+}
+.ramp-console .rc-context-caption {
+  display: block;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rc-ink-soft);
+  margin-bottom: 0.8rem;
+}
+.ramp-console .rc-context-desc {
+  font-size: 0.92rem;
+  color: var(--rc-ink-soft);
+  font-style: italic;
+  margin-bottom: 0.9rem;
+}
+.ramp-console .rc-context-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.ramp-console .rc-context-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+.ramp-console .rc-context-row-label {
+  color: var(--rc-ink-soft);
+}
+.ramp-console .rc-context-row-value {
+  color: var(--rc-ink);
+  font-weight: 500;
+  text-align: right;
+}
+.ramp-console .rc-context-use-btn {
+  margin-top: 1rem;
+  font-family: var(--font-public-sans), sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--rc-accent);
+  background: var(--rc-accent-soft);
+  border: 1px solid var(--rc-accent);
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+.ramp-console .rc-context-use-btn:hover {
+  background: var(--rc-accent);
+  color: var(--rc-bg);
+}
+
+/* ---------- Footer ---------- */
+.ramp-console .rc-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rc-rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.ramp-console .rc-footer p {
+  color: var(--rc-ink-soft);
+  font-size: 0.85rem;
+  max-width: 34rem;
+  line-height: 1.6;
+}
+.ramp-console .rc-footer-btn {
+  display: inline-block;
+  background: var(--rc-accent);
+  color: #0b0d10;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.ramp-console .rc-footer-btn:hover {
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+/* ---------- Results dashboard ---------- */
+.ramp-console .rc-results-empty {
+  color: var(--rc-ink-soft);
+  font-size: 0.95rem;
+  padding: 2rem 0;
+  border: 1px dashed var(--rc-rule);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.ramp-console .rc-tabs {
+  display: flex;
+  gap: 0.4rem;
+  border-bottom: 1px solid var(--rc-rule);
+}
+.ramp-console .rc-tab {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rc-ink-soft);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.8rem 0.9rem;
+  cursor: pointer;
+  margin-bottom: -1px;
+}
+.ramp-console .rc-tab:hover {
+  color: var(--rc-ink);
+}
+.ramp-console .rc-tab-active {
+  color: var(--rc-accent);
+  border-bottom-color: var(--rc-accent);
+}
+
+.ramp-console .rc-tab-panel {
+  padding: 1.8rem 0 0.4rem;
+}
+.ramp-console .rc-placeholder {
+  color: var(--rc-ink-soft);
+  font-size: 0.9rem;
+}
+
+/* ---------- Savings model ---------- */
+.ramp-console .rc-savings-header {
+  font-size: 0.92rem;
+  color: var(--rc-ink-soft);
+  margin-bottom: 1.4rem;
+}
+
+.ramp-console .rc-savings-lines {
+  display: flex;
+  flex-direction: column;
+}
+.ramp-console .rc-savings-line {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--rc-rule);
+}
+.ramp-console .rc-savings-line-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.ramp-console .rc-savings-line-label {
+  font-weight: 500;
+  font-size: 0.98rem;
+  color: var(--rc-ink);
+}
+.ramp-console .rc-savings-line-value {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 1rem;
+  color: var(--rc-accent);
+  font-variant-numeric: tabular-nums;
+}
+.ramp-console .rc-savings-line-note {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--rc-ink-soft);
+}
+
+.ramp-console .rc-unconfirmed-flag {
+  display: inline-block;
+  background: var(--rc-amber-soft);
+  color: var(--rc-amber);
+  border-radius: 3px;
+  padding: 0.2rem 0.55rem;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ramp-console .rc-savings-total {
+  margin-top: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: var(--rc-accent-soft);
+  border: 1px solid var(--rc-accent);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+}
+.ramp-console .rc-savings-total-label {
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--rc-ink);
+}
+.ramp-console .rc-savings-total-value {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--rc-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Call plan / Outputs (shared section styling) ---------- */
+.ramp-console .rc-tab-section + .rc-tab-section {
+  margin-top: 2.2rem;
+}
+.ramp-console .rc-tab-heading {
+  font-family: var(--font-spectral), serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--rc-ink);
+  margin-bottom: 1rem;
+}
+
+.ramp-console .rc-question-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  list-style: none;
+}
+.ramp-console .rc-question {
+  position: relative;
+  padding-left: 1.3rem;
+  color: var(--rc-ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.ramp-console .rc-question::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--rc-accent);
+}
+
+.ramp-console .rc-talktrack {
+  border-left: 2px solid var(--rc-accent);
+  padding: 0.2rem 0 0.2rem 1.2rem;
+}
+.ramp-console .rc-talktrack-angle {
+  display: block;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rc-accent);
+  margin-bottom: 0.5rem;
+}
+.ramp-console .rc-talktrack-line {
+  font-family: var(--font-spectral), serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--rc-ink);
+  max-width: 40rem;
+}
+
+/* ---------- Copy block (Outputs tab) ---------- */
+.ramp-console .rc-copyblock {
+  background: var(--rc-bg);
+  border: 1px solid var(--rc-rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.ramp-console .rc-copyblock-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--rc-rule);
+  background: var(--rc-bg-raised);
+}
+.ramp-console .rc-copyblock-label {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rc-ink-soft);
+}
+.ramp-console .rc-copy-btn {
+  font-family: var(--font-public-sans), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--rc-bg);
+  background: var(--rc-accent);
+  border: none;
+  border-radius: 4px;
+  padding: 0.35rem 0.8rem;
+  cursor: pointer;
+  min-width: 4.5rem;
+}
+.ramp-console .rc-copy-btn:hover {
+  opacity: 0.9;
+}
+.ramp-console .rc-copy-btn:focus-visible {
+  outline: 2px solid var(--rc-accent);
+  outline-offset: 2px;
+}
+.ramp-console .rc-copyblock-body {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  font-family: var(--font-public-sans), sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--rc-ink);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 700px) {
+  .ramp-console .rc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .ramp-console .rc-form-shell {
+    padding: 0.4rem 1.1rem 1.4rem;
+  }
+  .ramp-console .rc-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
