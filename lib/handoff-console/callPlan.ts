@@ -8,8 +8,13 @@ export interface TalkTrack {
   line: string;
 }
 
+export interface ConfirmAndExpandQuestion {
+  question: string;
+  why: string;
+}
+
 export interface CallPlan {
-  confirmAndExpandQuestions: string[];
+  confirmAndExpandQuestions: ConfirmAndExpandQuestion[];
   talkTrack: TalkTrack;
 }
 
@@ -64,43 +69,52 @@ function conversational(missingFieldsNote: string): string {
   return `Still unconfirmed: ${topic} — worth asking directly.`;
 }
 
-function getConfirmAndExpandQuestions(data: QualificationData): string[] {
-  const questions: string[] = [];
+function getConfirmAndExpandQuestions(data: QualificationData): ConfirmAndExpandQuestion[] {
+  const questions: ConfirmAndExpandQuestion[] = [];
 
   if (data.currentSolution === "manual-personal-cards") {
-    questions.push(
-      "You mentioned expenses are still manual today — walk me through what breaks first: the receipts, the approvals, or the reconciliation?"
-    );
+    questions.push({
+      question:
+        "You mentioned expenses are still manual today — walk me through what breaks first: the receipts, the approvals, or the reconciliation?",
+      why: "Pinpoints exactly where the manual process breaks down, so the demo targets the specific feature that fixes it — not a generic pitch.",
+    });
   }
 
   if (data.numCardholders != null) {
-    questions.push(
-      `With ${data.numCardholders} people holding cards or filing expenses, who actually owns catching the ones that don't get submitted on time?`
-    );
+    questions.push({
+      question: `With ${data.numCardholders} people holding cards or filing expenses, who actually owns catching the ones that don't get submitted on time?`,
+      why: "Surfaces who's accountable for chasing missed submissions today — usually reveals a gap automated approvals close.",
+    });
   }
 
   if (data.multiEntity === true) {
-    questions.push(
-      "How does spend visibility work across entities today — is finance stitching that together manually at month-end?"
-    );
+    questions.push({
+      question:
+        "How does spend visibility work across entities today — is finance stitching that together manually at month-end?",
+      why: "Multi-entity finance teams almost always have a consolidation problem worth quantifying — this confirms whether it's real here.",
+    });
   }
 
   if (data.accountingSoftware != null && data.accountingSoftware !== "none") {
     const label = ACCOUNTING_SOFTWARE_LABELS[data.accountingSoftware];
-    questions.push(`How clean is the sync between your current card process and ${label} right now?`);
+    questions.push({
+      question: `How clean is the sync between your current card process and ${label} right now?`,
+      why: "Sync friction is a concrete, provable cost center (hours + errors) — a specific wedge into the pitch, not a vague one.",
+    });
   }
 
   const savingsModel = computeSavingsModel(data);
   for (const line of savingsModel.lines) {
     if (line.status === "unconfirmed" && line.missingFieldsNote) {
-      questions.push(conversational(line.missingFieldsNote));
+      questions.push({ question: conversational(line.missingFieldsNote), why: line.why });
     }
   }
 
   if (data.triggerEvent) {
-    questions.push(
-      `You noted "${data.triggerEvent}" — what changed that's putting this on the radar now?`
-    );
+    questions.push({
+      question: `You noted "${data.triggerEvent}" — what changed that's putting this on the radar now?`,
+      why: "Trigger events create urgency — anchoring the timeline to a real internal event increases close velocity.",
+    });
   }
 
   return questions;

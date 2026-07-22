@@ -54,33 +54,37 @@ interface SavingsModelTabProps {
 export default function SavingsModel({ model }: SavingsModelTabProps) {
   return (
     <div className="rc-savings">
-      <p className="rc-savings-header">{getSavingsHeaderText(model)}</p>
-
-      <div className="rc-savings-lines">
-        {model.lines.map((line) => (
-          <div key={line.label} className="rc-savings-line">
-            <div className="rc-savings-line-top">
-              <span className="rc-savings-line-label">{line.label}</span>
-              {line.status === "confirmed" && line.low != null && line.high != null ? (
-                <span className="rc-savings-line-value">
-                  <CountingRange low={line.low} high={line.high} />
-                </span>
-              ) : (
-                <UnconfirmedFlag />
-              )}
-            </div>
-            <p className="rc-savings-line-note">
-              {line.status === "confirmed" ? line.basis : line.missingFieldsNote}
-            </p>
-          </div>
-        ))}
+      <div className="rc-savings-hero">
+        <span className="rc-savings-hero-label">Total confirmed savings / yr</span>
+        <div className="rc-savings-hero-value">
+          <CountingRange low={model.totalLow} high={model.totalHigh} />
+        </div>
+        <p className="rc-savings-hero-caption">{getSavingsHeaderText(model)}</p>
       </div>
 
-      <div className="rc-savings-total">
-        <span className="rc-savings-total-label">Total confirmed savings</span>
-        <span className="rc-savings-total-value">
-          <CountingRange low={model.totalLow} high={model.totalHigh} />
-        </span>
+      <div className="rc-savings-grid">
+        {model.lines.map((line) => (
+          <div
+            key={line.label}
+            className={
+              line.status === "confirmed" ? "rc-savings-card" : "rc-savings-card rc-savings-card-unconfirmed"
+            }
+          >
+            <div className="rc-savings-card-top">
+              <span className="rc-savings-card-label">{line.label}</span>
+              {line.status === "unconfirmed" && <UnconfirmedFlag />}
+            </div>
+            {line.status === "confirmed" && line.low != null && line.high != null && (
+              <div className="rc-savings-card-value">
+                <CountingRange low={line.low} high={line.high} />
+              </div>
+            )}
+            <p className="rc-savings-card-basis">
+              {line.status === "confirmed" ? line.basis : line.missingFieldsNote}
+            </p>
+            <p className="rc-savings-card-why">{line.why}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

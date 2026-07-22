@@ -53,7 +53,7 @@ export default function ResultsDashboard({ data }: { data: QualificationData }) 
 
       <div className="rc-tab-panel">
         {activeTab === "savings" && <SavingsModel model={savingsModel} />}
-        {activeTab === "callplan" && <CallPlan plan={callPlan} />}
+        {activeTab === "callplan" && <CallPlan key={data.companyName} plan={callPlan} />}
         {activeTab === "outputs" && <Outputs coldEmail={coldEmail} crmNoteText={crmNoteText} />}
       </div>
     </div>

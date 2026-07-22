@@ -1,5 +1,5 @@
 // Must never receive PublicContext — savings math is confirmed-data-only.
-import { BENCHMARKS } from "./rampBenchmarks";
+import { BENCHMARKS, SAVINGS_LINE_WHY } from "./rampBenchmarks";
 import type { QualificationData } from "./types";
 
 export interface SavingsLine {
@@ -8,6 +8,7 @@ export interface SavingsLine {
   low: number | null;
   high: number | null;
   basis: string;
+  why: string;
   missingFieldsNote?: string;
 }
 
@@ -38,6 +39,7 @@ export function computeSavingsModel(data: QualificationData): SavingsModel {
       low: roundTo100(annual * BENCHMARKS.savingsRate.low),
       high: roundTo100(annual * BENCHMARKS.savingsRate.high),
       basis: `Based on ${money(data.currentMonthlySpend)}/mo reported spend`,
+      why: SAVINGS_LINE_WHY.coreSpend.confirmed,
     });
   } else {
     lines.push({
@@ -46,6 +48,7 @@ export function computeSavingsModel(data: QualificationData): SavingsModel {
       low: null,
       high: null,
       basis: "",
+      why: SAVINGS_LINE_WHY.coreSpend.unconfirmed,
       missingFieldsNote: "Ask: current monthly card/vendor spend",
     });
   }
@@ -62,6 +65,7 @@ export function computeSavingsModel(data: QualificationData): SavingsModel {
       low: value,
       high: value,
       basis: `Based on reported spend × ${data.usdVendorSharePct}% USD vendor share`,
+      why: SAVINGS_LINE_WHY.fxMarkup.confirmed,
     });
   } else {
     lines.push({
@@ -70,6 +74,7 @@ export function computeSavingsModel(data: QualificationData): SavingsModel {
       low: null,
       high: null,
       basis: "",
+      why: SAVINGS_LINE_WHY.fxMarkup.unconfirmed,
       missingFieldsNote: "Ask: what % of vendor/software spend is billed in USD",
     });
   }
@@ -87,6 +92,7 @@ export function computeSavingsModel(data: QualificationData): SavingsModel {
         annualHours * BENCHMARKS.automationReduction.high * BENCHMARKS.financeHourlyCost.value
       ),
       basis: `Based on ${data.closeHoursPerMonth} hrs/mo reported close time`,
+      why: SAVINGS_LINE_WHY.closeTime.confirmed,
     });
   } else {
     lines.push({
@@ -95,6 +101,7 @@ export function computeSavingsModel(data: QualificationData): SavingsModel {
       low: null,
       high: null,
       basis: "",
+      why: SAVINGS_LINE_WHY.closeTime.unconfirmed,
       missingFieldsNote: "Ask: how many hours does month-end reconciliation take today",
     });
   }

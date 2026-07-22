@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import type { QualificationData } from "@/lib/handoff-console/types";
 import { PRESETS } from "@/lib/handoff-console/presets";
 import {
@@ -147,12 +148,36 @@ function TriStateInput({
 }
 
 export default function QualificationForm({ data, onChange }: QualificationFormProps) {
+  const [loadingPreset, setLoadingPreset] = useState<string | null>(null);
+  const timeoutRef = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current !== undefined) window.clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
   function set<K extends keyof QualificationData>(key: K, value: QualificationData[K]) {
     onChange({ ...data, [key]: value });
   }
 
+  function handleLoadPreset(preset: QualificationData) {
+    if (loadingPreset) return;
+    setLoadingPreset(preset.companyName);
+    timeoutRef.current = window.setTimeout(() => {
+      onChange({ ...preset });
+      setLoadingPreset(null);
+    }, 450);
+  }
+
   return (
     <div className="rc-form-shell">
+      {loadingPreset && (
+        <div className="rc-form-loading">
+          <span className="rc-form-loading-spinner" aria-hidden="true" />
+          <span className="rc-form-loading-text">Loading {loadingPreset}…</span>
+        </div>
+      )}
       <div className="rc-presets">
         <span className="rc-presets-label">Load sample qualification sheet (fictional)</span>
         <div className="rc-presets-row">
@@ -161,7 +186,8 @@ export default function QualificationForm({ data, onChange }: QualificationFormP
               key={preset.companyName}
               type="button"
               className="rc-preset-btn"
-              onClick={() => onChange({ ...preset })}
+              disabled={loadingPreset !== null}
+              onClick={() => handleLoadPreset(preset)}
             >
               {preset.companyName}
             </button>
